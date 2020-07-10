@@ -7,30 +7,33 @@ namespace SAE_Project
 	public class PlayerAction : MonoBehaviour
 	{
 		// Variables
-		
-
+		[SerializeField]
+		Animator animator;
 		// Functions
-		void Start( )
-		{
-
-		}
 		void Update( )
 		{
+			//shorten the Input Horizontal Key
+			float InputHorizontal  = Input.GetAxis("Horizontal");
+
 			//Move the sprite in horizontal direction
-			transform.Translate(Input.GetAxis("Horizontal") * 15f * Time.deltaTime, 0f, 0f);
-
+			transform.Translate(InputHorizontal * 15f * Time.deltaTime, 0f, 0f);
+			
 			//Flip the Sprite changing in horizontal direction
-
 			Vector3 characterScale = transform.localScale;
-			if (Input.GetAxis ("Horizontal") < 0)
+			if (InputHorizontal < 0 )
 			{
 				characterScale.x = -6;
 			}
-			if (Input.GetAxis ("Horizontal") > 0)
+			if (InputHorizontal > 0)
 			{
 				characterScale.x = 6;
 			}
 			transform.localScale = characterScale;
+
+			//Start Player moving animation
+			animator.SetBool("IsRunning",Mathf.Abs(InputHorizontal) > 0.1f);
+
+
 		}
 	}
 }
