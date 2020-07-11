@@ -20,10 +20,13 @@ namespace SAE_Project
 		[SerializeField]
 		private float _startDashTime;
 		private int _dashDirection;
-
+		public Transform attackPoint;
+		public float attackRange = 0f;
+		public int attackDamage = 100;
 		//Ground check variables
 		public bool isGrounded = false;
 
+		LayerMask EnemyLayer;
 		// Functions
 		//Jump function
 		void Jump( )
@@ -47,6 +50,17 @@ namespace SAE_Project
 
 		//	}
 		//}
+
+		void Attack()
+		{
+			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
+
+			foreach (Collider2D enemy in hitEnemies)
+			{
+				enemy.GetComponent<EnemiesHealth>().TakeDamage(attackDamage);
+			}
+			//animator.SetTrigger(IsAttacking);
+		}
 		void Update( )
 		{
 			//shorten the Horizontal input
@@ -75,8 +89,21 @@ namespace SAE_Project
 
 			//Fall();
 
+			if (Input.GetMouseButtonDown(1))
+			{
+				Attack();
+			}
 
+			
 		}
+
+		//private void OnDrawGizmos()
+		//{
+		//	if (attackPoint == null)
+		//		return;
+		//
+		//	Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+		//}
 	}
 }
 
