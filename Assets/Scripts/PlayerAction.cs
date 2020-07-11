@@ -20,26 +20,24 @@ namespace SAE_Project
 		[SerializeField]
 		private float _startDashTime;
 		private int _dashDirection;
-		//shorten the Horizontal input
-		float inputHorizontal = Input.GetAxis("Horizontal");
 
-
+		//Ground check variables
+		public bool isGrounded = false;
 
 		// Functions
 		//Jump function
 		void Jump( )
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
+			if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
 			{
 				gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
+
 			}
 		}
-
-
 		void Update( )
 		{
-
-
+		//shorten the Horizontal input
+		float inputHorizontal = Input.GetAxis("Horizontal");
 			//Move the sprite in horizontal direction
 			transform.Translate(inputHorizontal * _speed * Time.deltaTime, 0f, 0f);
 
@@ -62,8 +60,7 @@ namespace SAE_Project
 			Jump();
 			animator.SetBool("IsJumping", Input.GetKeyDown(KeyCode.Space));
 
-			//make character dash
-
+			
 		}
 	}
 }
