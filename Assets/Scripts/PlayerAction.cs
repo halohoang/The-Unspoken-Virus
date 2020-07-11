@@ -26,7 +26,7 @@ namespace SAE_Project
 		//Ground check variables
 		public bool isGrounded = false;
 
-		LayerMask EnemyLayer;
+		public LayerMask EnemyLayer;
 		// Functions
 		//Jump function
 		void Jump( )
@@ -59,7 +59,7 @@ namespace SAE_Project
 			{
 				enemy.GetComponent<EnemiesHealth>().TakeDamage(attackDamage);
 			}
-			//animator.SetTrigger(IsAttacking);
+			animator.SetTrigger("IsAttacking");
 		}
 		void Update( )
 		{
@@ -89,7 +89,7 @@ namespace SAE_Project
 
 			//Fall();
 
-			if (Input.GetMouseButtonDown(1))
+			if (Input.GetMouseButton(1))
 			{
 				Attack();
 			}
@@ -97,13 +97,13 @@ namespace SAE_Project
 			
 		}
 
-		//private void OnDrawGizmos()
-		//{
-		//	if (attackPoint == null)
-		//		return;
-		//
-		//	Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-		//}
+		private void OnDrawGizmos()
+		{
+			if (attackPoint == null)
+				return;
+		
+			Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+		}
 	}
 }
 
