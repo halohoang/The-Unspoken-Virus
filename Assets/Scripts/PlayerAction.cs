@@ -34,10 +34,23 @@ namespace SAE_Project
 
 			}
 		}
+		//void Fall( )
+		//{
+		//	if (isGrounded == false)
+		//	{
+		//		animator.SetBool("IsFalling", true);
+		//		animator.SetBool("IsJumping", false);
+		//		animator.SetBool("IsRunning", false);
+		//	}
+		//	else if (isGrounded == true) ;
+		//	{
+
+		//	}
+		//}
 		void Update( )
 		{
-		//shorten the Horizontal input
-		float inputHorizontal = Input.GetAxis("Horizontal");
+			//shorten the Horizontal input
+			float inputHorizontal = Input.GetAxis("Horizontal");
 			//Move the sprite in horizontal direction
 			transform.Translate(inputHorizontal * _speed * Time.deltaTime, 0f, 0f);
 
@@ -60,7 +73,9 @@ namespace SAE_Project
 			Jump();
 			animator.SetBool("IsJumping", Input.GetKeyDown(KeyCode.Space));
 
-			
+			//Fall();
+
+
 		}
 	}
 }
