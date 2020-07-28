@@ -23,6 +23,8 @@ namespace SAE_Project
 		public Transform attackPoint;
 		public float attackRange = 0f;
 		public int attackDamage = 100;
+		public Rigidbody2D rigidbody2d;
+		public BoxCollider2D boxCollider2D;
 		//Ground check variables
 		public bool isGrounded = false;
 
@@ -33,25 +35,48 @@ namespace SAE_Project
 		{
 			if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
 			{
+				//float jumpvelocity = 100f;
+                //rigidbody2d.velocity = Vector2.up*jumpvelocity;
 				gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
 
 			}
 		}
-		//void Fall( )
-		//{
-		//	if (isGrounded == false)
-		//	{
-		//		animator.SetBool("IsFalling", true);
-		//		animator.SetBool("IsJumping", false);
-		//		animator.SetBool("IsRunning", false);
-		//	}
-		//	else if (isGrounded == true) ;
-		//	{
+        //void Fall( )
+        //{
+        //	if (isGrounded == false)
+        //	{
+        //		animator.SetBool("IsFalling", true);
+        //		animator.SetBool("IsJumping", false);
+        //		animator.SetBool("IsRunning", false);
+        //	}
+        //	else if (isGrounded == true) ;
+        //	{
 
-		//	}
-		//}
+        //	}
+        //}
+        private void FixedUpdate()
+        {
+			float moveSpeed = 40f;
+			rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (Input.GetKey(KeyCode.A))
+            {
+				rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
+            }
+            else
+            {
+				if (Input.GetKey(KeyCode.D))
+				{
+					rigidbody2d.velocity = new Vector2(+moveSpeed, rigidbody2d.velocity.y);
+				}
+				else //no key pressed
+				{
+					rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
+					rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                }
 
-		void Attack()
+            }
+        }
+        void Attack()
 		{
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
 
