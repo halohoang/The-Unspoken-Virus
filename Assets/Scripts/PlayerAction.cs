@@ -47,48 +47,17 @@ namespace SAE_Project
 
 			}
 		}
-
-		//private void FixedUpdate( )
-		//{
-		//	float moveSpeed = 40f;
-		//	_rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-		//	if (Input.GetKey(KeyCode.A))
-		//	{
-		//		_rigidbody2D.velocity = new Vector2(-moveSpeed, _rigidbody2D.velocity.y);
-		//	}
-		//	else
-		//	{
-		//		if (Input.GetKey(KeyCode.D))
-		//		{
-		//			_rigidbody2D.velocity = new Vector2(+moveSpeed, _rigidbody2D.velocity.y);
-		//		}
-		//		else //no key pressed
-		//		{
-		//			_rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
-		//			_rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-		//		}
-		//	}
-		//}
+		//Fall Function
 		void Fall( )
 		{
 			if (_rigidbody2D.velocity.y < 0)
 			{
 				animator.SetBool("IsFalling", true);
 				animator.SetBool("IsJumping", false);
-				//animator.SetBool("IsRunning", false);
+
 			}
 		}
 
-		void Attack( )
-		{
-			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
-
-			foreach (Collider2D enemy in hitEnemies)
-			{
-				enemy.GetComponent<EnemiesHealth>().TakeDamage(attackDamage);
-			}
-			animator.SetTrigger("IsAttacking");
-		}
 		void Update( )
 		{
 			//shorten the Horizontal input
@@ -126,14 +95,22 @@ namespace SAE_Project
 			}
 
 
-			if (Input.GetMouseButton(1))
+			if (Input.GetMouseButtonDown(1))
 			{
 				Attack();
 			}
 
 		}
+		void Attack( )
+		{
+			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
 
-
+			foreach (Collider2D enemy in hitEnemies)
+			{
+				enemy.GetComponent<EnemiesHealth>().TakeDamage(attackDamage);
+			}
+			animator.SetTrigger("IsAttacking");
+		}
 		private void OnDrawGizmos( )
 		{
 			if (attackPoint == null)
