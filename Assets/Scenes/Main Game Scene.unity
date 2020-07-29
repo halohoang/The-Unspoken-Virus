@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6750a2efe69517c43b44a6fb8b12916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10000000
+  maxHealth: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +745,9 @@ MonoBehaviour:
   boxCollider2D: {fileID: 0}
   isGrounded: 0
   _rigidbody2D: {fileID: 2040516861}
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &2040516861
 Rigidbody2D:
   serializedVersion: 4

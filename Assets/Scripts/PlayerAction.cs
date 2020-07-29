@@ -32,7 +32,7 @@ namespace SAE_Project
 
 
 
-		LayerMask EnemyLayer;
+		public LayerMask EnemyLayer;
 		// Functions
 		//Jump function
 		void Jump( )
