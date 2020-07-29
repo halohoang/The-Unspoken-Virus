@@ -26,32 +26,33 @@ namespace SAE_Project
 		//Ground check variables
 		public bool isGrounded = false;
 
+		[SerializeField]
+		private Rigidbody2D _rigidbody2D;
+
+
+
 		LayerMask EnemyLayer;
 		// Functions
 		//Jump function
 		void Jump( )
 		{
-			if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
-
+				_rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
+				animator.SetBool("IsJumping", true);
 			}
 		}
-		//void Fall( )
-		//{
-		//	if (isGrounded == false)
-		//	{
-		//		animator.SetBool("IsFalling", true);
-		//		animator.SetBool("IsJumping", false);
-		//		animator.SetBool("IsRunning", false);
-		//	}
-		//	else if (isGrounded == true) ;
-		//	{
+		void Fall( )
+		{
+			if (_rigidbody2D.velocity.y < 0)
+			{
+				animator.SetBool("IsFalling", true);
+				animator.SetBool("IsJumping", false);
+				//animator.SetBool("IsRunning", false);
+			}
+		}
 
-		//	}
-		//}
-
-		void Attack()
+		void Attack( )
 		{
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
 
@@ -83,18 +84,27 @@ namespace SAE_Project
 			//Start Player moving animation
 			animator.SetBool("IsRunning", Mathf.Abs(inputHorizontal) > 0.1f);
 
-			//make character jump
-			Jump();
-			animator.SetBool("IsJumping", Input.GetKeyDown(KeyCode.Space));
+			if (isGrounded)
+			{
+				//make character jump
+				animator.SetBool("IsFalling", false);
+				animator.SetBool("IsJumping", false);
+				Jump();
 
-			//Fall();
+			}
+			else
+			{
+				//make character fall
+				Fall();
+			}
+
 
 			if (Input.GetMouseButtonDown(1))
 			{
 				Attack();
 			}
 
-			
+
 		}
 
 		//private void OnDrawGizmos()
