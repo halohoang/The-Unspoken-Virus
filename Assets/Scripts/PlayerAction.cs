@@ -23,7 +23,6 @@ namespace SAE_Project
 		public Transform attackPoint;
 		public float attackRange = 0f;
 		public int attackDamage = 100;
-		public Rigidbody2D rigidbody2d;
 		public BoxCollider2D boxCollider2D;
 		//Ground check variables
 		public bool isGrounded = false;
@@ -43,31 +42,33 @@ namespace SAE_Project
 				_rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
 				animator.SetBool("IsJumping", true);
 				//float jumpvelocity = 100f;
-                //rigidbody2d.velocity = Vector2.up*jumpvelocity;
-				
+				//rigidbody2d.velocity = Vector2.up*jumpvelocity;
+
 
 			}
 		}
-       
-        private void FixedUpdate()
-        {
-			float moveSpeed = 40f;
-			rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            if (Input.GetKey(KeyCode.A))
-            {
-				rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
-            }
-            else
-            {
-				if (Input.GetKey(KeyCode.D))
-				{
-					rigidbody2d.velocity = new Vector2(+moveSpeed, rigidbody2d.velocity.y);
-				}
-				else //no key pressed
-				{
-					rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
-					rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-                }
+
+		//private void FixedUpdate( )
+		//{
+		//	float moveSpeed = 40f;
+		//	_rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+		//	if (Input.GetKey(KeyCode.A))
+		//	{
+		//		_rigidbody2D.velocity = new Vector2(-moveSpeed, _rigidbody2D.velocity.y);
+		//	}
+		//	else
+		//	{
+		//		if (Input.GetKey(KeyCode.D))
+		//		{
+		//			_rigidbody2D.velocity = new Vector2(+moveSpeed, _rigidbody2D.velocity.y);
+		//		}
+		//		else //no key pressed
+		//		{
+		//			_rigidbody2D.velocity = new Vector2(0, _rigidbody2D.velocity.y);
+		//			_rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+		//		}
+		//	}
+		//}
 		void Fall( )
 		{
 			if (_rigidbody2D.velocity.y < 0)
@@ -78,9 +79,7 @@ namespace SAE_Project
 			}
 		}
 
-            }
-        }
-        void Attack()
+		void Attack( )
 		{
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
 
@@ -132,17 +131,18 @@ namespace SAE_Project
 				Attack();
 			}
 
-
 		}
 
-		private void OnDrawGizmos()
+
+		private void OnDrawGizmos( )
 		{
 			if (attackPoint == null)
 				return;
-		
+
 			Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 		}
 	}
 }
+
 
 
