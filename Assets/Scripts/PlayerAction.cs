@@ -52,6 +52,24 @@ namespace SAE_Project
 
 			}
 		}
+		public void Attack( )
+		{
+			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
+
+			foreach (Collider2D enemy in hitEnemies)
+			{
+				enemy.GetComponent<EnemiesHealth>().TakeDamage(_attackDamage);
+			}
+		}
+		private void OnDrawGizmos( )
+		{
+			if (attackPoint == null)
+				return;
+
+			Gizmos.DrawWireSphere(attackPoint.position, _attackRange);
+		}
+
+
 
 		void Update( )
 		{
@@ -92,28 +110,13 @@ namespace SAE_Project
 
 			if (Input.GetMouseButtonDown(1))
 			{
-				Attack();
+				animator.SetTrigger("IsAttacking");
+
 			}
 
-		}
-		void Attack( )
-		{
-			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
-
-			foreach (Collider2D enemy in hitEnemies)
-			{
-				enemy.GetComponent<EnemiesHealth>().TakeDamage(_attackDamage);
-			}
-			animator.SetTrigger("IsAttacking");
-		}
-		private void OnDrawGizmos( )
-		{
-			if (attackPoint == null)
-				return;
-
-			Gizmos.DrawWireSphere(attackPoint.position, _attackRange);
 		}
 	}
+
 }
 
 

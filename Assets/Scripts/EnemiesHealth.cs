@@ -7,7 +7,8 @@ namespace SAE_Project
     public class EnemiesHealth : MonoBehaviour
     {   //Variables
         [SerializeField]
-        private int _maxHealth;
+        private int _maxHealth =1;
+        [SerializeField]
         private int _currentHealth;
         // Start is called before the first frame update
         void Start()
