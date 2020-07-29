@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SAE_Project.Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,11 +22,15 @@ namespace SAE_Project
 		private float _startDashTime;
 		private int _dashDirection;
 		public Transform attackPoint;
+		public Transform shootPoint;
 		public float attackRange = 0f;
 		public int attackDamage = 100;
 		public BoxCollider2D boxCollider2D;
 		//Ground check variables
 		public bool isGrounded = false;
+		[SerializeField]
+		private GameObject _projectilePrefab;
+
 
 		[SerializeField]
 		private Rigidbody2D _rigidbody2D;
@@ -131,6 +136,12 @@ namespace SAE_Project
 				Attack();
 			}
 
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				Projectile projectile = Instantiate(_projectilePrefab, shootPoint.position, transform.rotation).GetComponent<Projectile>();
+				
+				projectile.Shoot();
+			}
 		}
 
 
@@ -140,6 +151,9 @@ namespace SAE_Project
 				return;
 
 			Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
+			if (shootPoint == null)
+				return;
 		}
 	}
 }
