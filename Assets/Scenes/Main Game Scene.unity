@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2040516859}
-  _speed: 5
+  _speed: 8
   _jumpHeight: 8
   _dashSpeed: 0
   _dashTime: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1595635281}
   shootPoint: {fileID: 672516524}
   attackRange: 1.1
-  attackDamage: 100
+  attackDamage: 1
   boxCollider2D: {fileID: 0}
   isGrounded: 0
   _projectilePrefab: {fileID: 5496299056026963956, guid: 1c3892a2e9e009443857946ac1bc15ed,
