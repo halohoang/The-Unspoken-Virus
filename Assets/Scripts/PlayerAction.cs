@@ -23,6 +23,8 @@ namespace SAE_Project
 		public Transform attackPoint;
 		public float attackRange = 0f;
 		public int attackDamage = 100;
+		public Rigidbody2D rigidbody2d;
+		public BoxCollider2D boxCollider2D;
 		//Ground check variables
 		public bool isGrounded = false;
 
@@ -40,8 +42,32 @@ namespace SAE_Project
 			{
 				_rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
 				animator.SetBool("IsJumping", true);
+				//float jumpvelocity = 100f;
+                //rigidbody2d.velocity = Vector2.up*jumpvelocity;
+				
+
 			}
 		}
+       
+        private void FixedUpdate()
+        {
+			float moveSpeed = 40f;
+			rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (Input.GetKey(KeyCode.A))
+            {
+				rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
+            }
+            else
+            {
+				if (Input.GetKey(KeyCode.D))
+				{
+					rigidbody2d.velocity = new Vector2(+moveSpeed, rigidbody2d.velocity.y);
+				}
+				else //no key pressed
+				{
+					rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
+					rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                }
 		void Fall( )
 		{
 			if (_rigidbody2D.velocity.y < 0)
@@ -52,7 +78,9 @@ namespace SAE_Project
 			}
 		}
 
-		void Attack( )
+            }
+        }
+        void Attack()
 		{
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, EnemyLayer);
 
@@ -60,7 +88,7 @@ namespace SAE_Project
 			{
 				enemy.GetComponent<EnemiesHealth>().TakeDamage(attackDamage);
 			}
-			//animator.SetTrigger(IsAttacking);
+			animator.SetTrigger("IsAttacking");
 		}
 		void Update( )
 		{
@@ -99,7 +127,7 @@ namespace SAE_Project
 			}
 
 
-			if (Input.GetMouseButtonDown(1))
+			if (Input.GetMouseButton(1))
 			{
 				Attack();
 			}
@@ -107,13 +135,13 @@ namespace SAE_Project
 
 		}
 
-		//private void OnDrawGizmos()
-		//{
-		//	if (attackPoint == null)
-		//		return;
-		//
-		//	Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-		//}
+		private void OnDrawGizmos()
+		{
+			if (attackPoint == null)
+				return;
+		
+			Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+		}
 	}
 }
 

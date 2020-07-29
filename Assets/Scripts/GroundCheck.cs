@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SAE_Project
 {
-
+    
 	public class GroundCheck : MonoBehaviour
 	{
 		// Variables
@@ -12,6 +12,9 @@ namespace SAE_Project
 		//
 		//Hayoon, Please note what i am doing because this is important for your map creation & integration
 		//
+		public float gravity = 0.8f;
+		bool isGrounded;
+
 
 		// Functions
 		void Start( )
