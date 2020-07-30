@@ -28,6 +28,11 @@ namespace SAE_Project
 		[SerializeField]
 		private Rigidbody2D _rigidbody2D;
 
+		[SerializeField]
+		private Camera _camera;
+
+
+
 
 
 		public LayerMask EnemyLayer;
@@ -75,9 +80,19 @@ namespace SAE_Project
 		}
 		private void Casting( )
 		{
-			Projectile projectile = Instantiate(_projectilePrefab, shootPoint.position, transform.rotation).GetComponent<Projectile>();
+			//Casting projectiles to direction of mouse cursor
+			Vector2 mouseposition = Input.mousePosition;
+			Ray ray = _camera.ScreenPointToRay(mouseposition);
+			Plane plane = new Plane(Vector3.forward, Vector3.zero);
 			
-		}
+		if(	plane.Raycast(ray, out float distance))
+			{
+				Vector3 position = ray.GetPoint(distance);
+				Vector3 direction = (position - transform.position).normalized;
+				Projectile projectile = Instantiate(_projectilePrefab, transform.position +direction*2, transform.rotation).GetComponent<Projectile>();
+				projectile.transform.right = direction;
+			}
+;		}
 
 
 

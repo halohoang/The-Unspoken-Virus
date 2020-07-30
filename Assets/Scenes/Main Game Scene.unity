@@ -907,6 +907,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 5496299056026963956, guid: 1c3892a2e9e009443857946ac1bc15ed,
     type: 3}
   _rigidbody2D: {fileID: 2040516861}
+  _camera: {fileID: 519420031}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256
