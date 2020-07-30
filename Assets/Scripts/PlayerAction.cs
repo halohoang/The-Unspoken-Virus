@@ -28,6 +28,7 @@ namespace SAE_Project
 		//Ground check variables
 		public bool isGrounded = false;
 
+
 		public LayerMask EnemyLayer;
 		// Functions
 		//Jump function
@@ -54,6 +55,8 @@ namespace SAE_Project
 
         //	}
         //}
+
+        //movement
         private void FixedUpdate()
         {
 			float moveSpeed = 40f;
