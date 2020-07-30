@@ -1,4 +1,4 @@
-﻿using SAE_Project.Assets.Scripts;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,8 +25,6 @@ namespace SAE_Project
 		public bool isGrounded = false;
 		[SerializeField]
 		private GameObject _projectilePrefab;
-
-
 		[SerializeField]
 		private Rigidbody2D _rigidbody2D;
 
@@ -57,21 +55,28 @@ namespace SAE_Project
 
 			}
 		}
+		//Attack Function
 		public void Attack( )
 		{
 			Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
 
 			foreach (Collider2D enemy in hitEnemies)
 			{
-				enemy.GetComponent<EnemiesHealth>().TakeDamage(_attackDamage);
+				enemy.GetComponent<IDamageable>().DealDamage(_attackDamage);
 			}
 		}
+		//Deploy Gizmos for attack function
 		private void OnDrawGizmos( )
 		{
 			if (attackPoint == null)
 				return;
 
 			Gizmos.DrawWireSphere(attackPoint.position, _attackRange);
+		}
+		private void Casting( )
+		{
+			Projectile projectile = Instantiate(_projectilePrefab, shootPoint.position, transform.rotation).GetComponent<Projectile>();
+			
 		}
 
 
@@ -98,6 +103,7 @@ namespace SAE_Project
 			//Start Player moving animation
 			animator.SetBool("IsRunning", Mathf.Abs(inputHorizontal) > 0.1f);
 
+			//Related to Groundcheck class
 			if (isGrounded)
 			{
 				//make character jump
@@ -116,14 +122,11 @@ namespace SAE_Project
 			if (Input.GetMouseButtonDown(1))
 			{
 				animator.SetTrigger("IsAttacking");
-
 			}
 
-			if (Input.GetKeyDown(KeyCode.E))
+			if (Input.GetMouseButtonDown(0))
 			{
-				Projectile projectile = Instantiate(_projectilePrefab, shootPoint.position, transform.rotation).GetComponent<Projectile>();
-				
-				projectile.Shoot();
+				animator.SetTrigger("IsCasting");
 			}
 		}
 	}

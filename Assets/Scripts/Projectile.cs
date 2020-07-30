@@ -1,34 +1,28 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
-namespace SAE_Project.Assets.Scripts
+namespace SAE_Project
 {
 	public class Projectile : MonoBehaviour
 	{
 
+		public Faction Team;
 		[SerializeField]
-		private int _damage = 1;
-		
+		private int _damage;
+
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			if (collision.TryGetComponent(out PlayersHealth health))
+			if (collision.TryGetComponent(out IDamageable damage))
 			{
-
-				health.DealDamage(_damage);
-
-
-				Destroy(gameObject);
+				if (damage.GetFaction() != Team )
+				{
+					damage.DealDamage(_damage);
+				}
 			}
-
-
-
-		}
-		
-		public void Shoot()
-		{
-
 		}
 	}
 }

@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SAE_Project
 {
-
-	public class PlayersHealth : MonoBehaviour
+	public interface IDamageable
+	{
+		void DealDamage(int damage);
+		Faction GetFaction();
+	}
+		
+	public class PlayersHealth : MonoBehaviour, IDamageable
 	{
 		//Variables 
 		public int _currentHealth;
@@ -29,6 +34,11 @@ namespace SAE_Project
 			}
 
 			
+		}
+
+		public Faction GetFaction( )
+		{
+			return Faction.Player;
 		}
 	}
 
