@@ -47,6 +47,11 @@ namespace SAE_Project
 		//Enemy LayerMask
 		public LayerMask EnemyLayer;
 
+		//Attack cooldown
+		[SerializeField]
+		private float _attackCooldown = 1f;
+		private float _timer;
+
 
 
 		// Functions
@@ -176,12 +181,23 @@ namespace SAE_Project
 			{
 				Vector3 position = ray.GetPoint(distance);
 				Vector3 direction = (position - transform.position).normalized;
-				Projectile projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
+				Projectile projectile = new Projectile();
+				if (_timer <= 0)
+				{
+					 projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
+					_timer = _attackCooldown;
+				}
+				
 				projectile.transform.right = direction;
 			}
 		}
 		void Update( )
 		{
+			//Decrease time each successful casting
+			if (_timer > 0)
+			{
+				_timer -= Time.deltaTime;
+			}
 			if (!IsDashing)
 			{
 

@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33f1d473531b54bb50f0daf2d16e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0.8
+  gravity: 2
 --- !u!1 &342856179
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2040516859}
-  _speed: 5
+  _speed: 7
   _jumpHeight: 8
   attackPoint: {fileID: 1595635281}
   _attackRange: 1
@@ -916,6 +916,7 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  _attackCooldown: 1
 --- !u!50 &2040516861
 Rigidbody2D:
   serializedVersion: 4
@@ -951,6 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 1
   _maxHealth: 1
+  animator: {fileID: 2040516859}
 --- !u!1 &2071344640
 GameObject:
   m_ObjectHideFlags: 0

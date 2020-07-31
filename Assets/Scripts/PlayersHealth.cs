@@ -16,6 +16,7 @@ namespace SAE_Project
 		[SerializeField]
 		public int _maxHealth;
 		[SerializeField]
+		Animator animator;
 
 		// Functions
 		void Update()
@@ -29,7 +30,8 @@ namespace SAE_Project
 
 			if (_currentHealth <= 0)
 			{
-				Destroy(gameObject);
+				//Destroy(gameObject);
+				animator.SetTrigger("IsDead");
 				Debug.Log(_currentHealth);
 			}
 
