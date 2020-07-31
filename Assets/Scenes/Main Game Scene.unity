@@ -897,17 +897,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2040516859}
-  _speed: 7.12
+  _speed: 5
   _jumpHeight: 8
   attackPoint: {fileID: 1595635281}
   _attackRange: 1
-  shootPoint: {fileID: 672516524}
   _attackDamage: 10
   isGrounded: 0
   _projectilePrefab: {fileID: 5496299056026963956, guid: 1c3892a2e9e009443857946ac1bc15ed,
     type: 3}
   _rigidbody2D: {fileID: 2040516861}
+  shootPoint: {fileID: 672516524}
   _camera: {fileID: 519420031}
+  dashDistance: 5
+  IsDashing: 0
+  DoubleTapTime: 0
+  Waitsleep: 0.4
+  rb: {fileID: 2040516861}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256

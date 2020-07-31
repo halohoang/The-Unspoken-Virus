@@ -8,35 +8,121 @@ namespace SAE_Project
 	public class PlayerAction : MonoBehaviour
 	{
 		// Variables
+
 		[SerializeField]
 		Animator animator;
 		[SerializeField]
 		private float _speed;
 		[SerializeField]
 		private float _jumpHeight;
+		//Variables for melee function
 		public Transform attackPoint;
 		[SerializeField]
 		private float _attackRange;
 		[SerializeField]
-		public Transform shootPoint;
-		[SerializeField]
 		private int _attackDamage;
 		//Ground check variables
 		public bool isGrounded = false;
+		//Variables for shooting function
 		[SerializeField]
 		private GameObject _projectilePrefab;
 		[SerializeField]
 		private Rigidbody2D _rigidbody2D;
-
+		[SerializeField]
+		public Transform shootPoint;
+		//dashing variables
 		[SerializeField]
 		private Camera _camera;
 
-
-
-
-
+		//Dash Variables
+		[SerializeField]
+		private float dashDistance;
+		public bool IsDashing;
+		public float DoubleTapTime; //How are you going to initiate the dash function direction 
+		[SerializeField]
+		public float Waitsleep;
+		[SerializeField]
+		Rigidbody2D rb;
+		KeyCode lastKeyCode;
+		//Enemy LayerMask
 		public LayerMask EnemyLayer;
+
+
+
 		// Functions
+
+		//Move function
+		private void Move( )
+		{
+			//shorten the Horizontal input
+			float inputHorizontal = Input.GetAxis("Horizontal");
+			//Move the sprite in horizontal direction
+			transform.Translate(inputHorizontal * _speed * Time.deltaTime, 0f, 0f);
+
+			//Flip the Sprite changing in horizontal direction
+			Vector3 characterScale = transform.localScale;
+			if (inputHorizontal < 0)
+			{
+				characterScale.x = -6;
+			}
+			if (inputHorizontal > 0)
+			{
+				characterScale.x = 6;
+			}
+			transform.localScale = characterScale;
+			//Start Player moving animation
+			animator.SetBool("IsRunning", Mathf.Abs(inputHorizontal) > 0.1f);
+		}
+
+		//Dash Function
+		private void Dash( )
+		{
+			//Dash Left
+			if (Input.GetKeyDown(KeyCode.A))
+			{
+				if (DoubleTapTime > Time.time && lastKeyCode == KeyCode.A)
+				{
+					StartCoroutine(Dash(-1f));
+					animator.SetBool("IsDashing", true);
+				}
+				else
+				{
+					//the amount of second to tap again to actually able to dash
+					DoubleTapTime = Time.time + 0.5f;
+				}
+
+				lastKeyCode = KeyCode.A;
+			}
+			//Dash Right
+			else if (Input.GetKeyDown(KeyCode.D))
+			{
+				if (DoubleTapTime > Time.time && lastKeyCode == KeyCode.D)
+				{
+					StartCoroutine(Dash(1f));
+					animator.SetBool("IsDashing", true);
+
+
+				}
+				else
+				{
+					DoubleTapTime = Time.time + 0.5f;
+				}
+
+				lastKeyCode = KeyCode.D;
+			}
+		}
+		IEnumerator Dash(float direction)
+		{
+			IsDashing = true;
+			rb.velocity = new Vector2(rb.velocity.x, 0f);
+			rb.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
+			float gravity = rb.gravityScale;
+			rb.gravityScale = 0;
+			yield return new WaitForSeconds(Waitsleep);
+			IsDashing = false;
+			rb.gravityScale = gravity;
+		}
+
 		//Jump function
 		void Jump( )
 		{
@@ -44,22 +130,22 @@ namespace SAE_Project
 			{
 				_rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
 				animator.SetBool("IsJumping", true);
-				//float jumpvelocity = 100f;
-				//rigidbody2d.velocity = Vector2.up*jumpvelocity;
-
-
 			}
 		}
+
 		//Fall Function
 		void Fall( )
 		{
 			if (_rigidbody2D.velocity.y < 0)
 			{
+				animator.SetBool("IsDashing", false);
 				animator.SetBool("IsFalling", true);
 				animator.SetBool("IsJumping", false);
 
+
 			}
 		}
+
 		//Attack Function
 		public void Attack( )
 		{
@@ -78,45 +164,32 @@ namespace SAE_Project
 
 			Gizmos.DrawWireSphere(attackPoint.position, _attackRange);
 		}
+
 		private void Casting( )
 		{
 			//Casting projectiles to direction of mouse cursor
 			Vector2 mouseposition = Input.mousePosition;
 			Ray ray = _camera.ScreenPointToRay(mouseposition);
 			Plane plane = new Plane(Vector3.forward, Vector3.zero);
-			
-		if(	plane.Raycast(ray, out float distance))
+
+			if (plane.Raycast(ray, out float distance))
 			{
 				Vector3 position = ray.GetPoint(distance);
 				Vector3 direction = (position - transform.position).normalized;
-				Projectile projectile = Instantiate(_projectilePrefab, transform.position +direction*2, transform.rotation).GetComponent<Projectile>();
+				Projectile projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
 				projectile.transform.right = direction;
 			}
-;		}
-
-
-
+		}
 		void Update( )
 		{
-			//shorten the Horizontal input
-			float inputHorizontal = Input.GetAxis("Horizontal");
-			//Move the sprite in horizontal direction
-			transform.Translate(inputHorizontal * _speed * Time.deltaTime, 0f, 0f);
-
-			//Flip the Sprite changing in horizontal direction
-			Vector3 characterScale = transform.localScale;
-			if (inputHorizontal < 0)
+			if (!IsDashing)
 			{
-				characterScale.x = -6;
-			}
-			if (inputHorizontal > 0)
-			{
-				characterScale.x = 6;
-			}
-			transform.localScale = characterScale;
 
-			//Start Player moving animation
-			animator.SetBool("IsRunning", Mathf.Abs(inputHorizontal) > 0.1f);
+				Move();
+			}
+
+			////Make Character move
+			//Move();
 
 			//Related to Groundcheck class
 			if (isGrounded)
@@ -133,7 +206,10 @@ namespace SAE_Project
 				Fall();
 			}
 
+			//Make character dash
+			Dash();
 
+			//Play attack & casting animation
 			if (Input.GetMouseButtonDown(1))
 			{
 				animator.SetTrigger("IsAttacking");
