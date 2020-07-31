@@ -901,13 +901,18 @@ MonoBehaviour:
   _jumpHeight: 8
   attackPoint: {fileID: 1595635281}
   _attackRange: 1
-  shootPoint: {fileID: 672516524}
   _attackDamage: 10
   isGrounded: 0
   _projectilePrefab: {fileID: 5496299056026963956, guid: 1c3892a2e9e009443857946ac1bc15ed,
     type: 3}
   _rigidbody2D: {fileID: 2040516861}
+  shootPoint: {fileID: 672516524}
   _camera: {fileID: 519420031}
+  dashDistance: 2
+  IsDashing: 0
+  DoubleTapTime: 1
+  Waitsleep: 0.4
+  rb: {fileID: 2040516861}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256
