@@ -9,11 +9,13 @@ namespace SAE_Project
 {
 	public class Projectile : MonoBehaviour
 	{
-
+		//Variables
 		public Faction Team;
 		[SerializeField]
 		private int _damage;
 
+
+		//Functions
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.TryGetComponent(out IDamageable damage))

@@ -47,28 +47,13 @@ namespace SAE_Project
 		//Enemy LayerMask
 		public LayerMask EnemyLayer;
 
+		//Attack cooldown
+		[SerializeField]
+		private float _attackCooldown = 1f;
+		private float _timer;
 
-        //	}
-        //}
-        private void FixedUpdate()
-        {
-			float moveSpeed = 40f;
-			rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            if (Input.GetKey(KeyCode.A))
-            {
-				rigidbody2d.velocity = new Vector2(-moveSpeed, rigidbody2d.velocity.y);
-            }
-            else
-            {
-				if (Input.GetKey(KeyCode.D))
-				{
-					rigidbody2d.velocity = new Vector2(+moveSpeed, rigidbody2d.velocity.y);
-				}
-				else //no key pressed
-				{
-					rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
-					rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-                }
+        
+		
 
 		// Functions
 
@@ -163,6 +148,7 @@ namespace SAE_Project
 				animator.SetBool("IsFalling", true);
 				animator.SetBool("IsJumping", false);
 
+
 			}
 		}
 
@@ -196,20 +182,31 @@ namespace SAE_Project
 			{
 				Vector3 position = ray.GetPoint(distance);
 				Vector3 direction = (position - transform.position).normalized;
-				Projectile projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
+				Projectile projectile = new Projectile();
+				if (_timer <= 0)
+				{
+					 projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
+					_timer = _attackCooldown;
+				}
+				
 				projectile.transform.right = direction;
 			}
 		}
 		void Update( )
 		{
+			//Decrease time each successful casting
+			if (_timer > 0)
+			{
+				_timer -= Time.deltaTime;
+			}
 			if (!IsDashing)
 			{
 
 				Move();
 			}
 
-			//Make Character move
-			Move();
+			////Make Character move
+			//Move();
 
 			//Related to Groundcheck class
 			if (isGrounded)
