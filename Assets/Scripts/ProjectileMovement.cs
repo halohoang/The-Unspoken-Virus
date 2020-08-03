@@ -7,7 +7,7 @@ namespace SAE_Project.Assets.Scripts
 {
 	public class ProjectileMovement : MonoBehaviour
 	{
-
+		//Variables
 		[SerializeField]
 		private float _range = 10;
 		protected Vector2 _direction;
@@ -18,6 +18,7 @@ namespace SAE_Project.Assets.Scripts
 
 		public float LifeTime => _range / _speed;
 
+		//Functions
 		private void OnEnable()
 		{
 			Destroy(gameObject, LifeTime);

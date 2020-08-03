@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SAE_Project
 {
-
-	public class PlayersHealth : MonoBehaviour
+	public interface IDamageable
+	{
+		void DealDamage(int damage);
+		Faction GetFaction();
+	}
+		
+	public class PlayersHealth : MonoBehaviour, IDamageable
 	{
 		//Variables 
 		public int _currentHealth;
 		[SerializeField]
 		public int _maxHealth;
 		[SerializeField]
+		Animator animator;
 
 		// Functions
 		void Update()
@@ -24,11 +30,17 @@ namespace SAE_Project
 
 			if (_currentHealth <= 0)
 			{
-				Destroy(gameObject);
+				//Destroy(gameObject);
+				animator.SetTrigger("IsDead");
 				Debug.Log(_currentHealth);
 			}
 
 			
+		}
+
+		public Faction GetFaction( )
+		{
+			return Faction.Player;
 		}
 	}
 

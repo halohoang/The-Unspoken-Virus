@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33f1d473531b54bb50f0daf2d16e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0.8
+  gravity: 2
 --- !u!1 &342856179
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6750a2efe69517c43b44a6fb8b12916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
-  _currentHealth: 10
+  _maxHealth: 1
+  _currentHealth: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672516523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0.022, z: 0}
+  m_LocalPosition: {x: 0.335, y: 0.022, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2040516857}
@@ -593,7 +593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1504410942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -656,8 +656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6750a2efe69517c43b44a6fb8b12916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
-  _currentHealth: 10
+  _maxHealth: 1
+  _currentHealth: 1
 --- !u!50 &1504410944
 Rigidbody2D:
   serializedVersion: 4
@@ -897,19 +897,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2040516859}
-  _speed: 7.12
+  _speed: 7
   _jumpHeight: 8
   attackPoint: {fileID: 1595635281}
   _attackRange: 1
-  shootPoint: {fileID: 672516524}
   _attackDamage: 10
   isGrounded: 0
   _projectilePrefab: {fileID: 5496299056026963956, guid: 1c3892a2e9e009443857946ac1bc15ed,
     type: 3}
   _rigidbody2D: {fileID: 2040516861}
+  shootPoint: {fileID: 672516524}
+  _camera: {fileID: 519420031}
+  dashDistance: 5
+  IsDashing: 0
+  DoubleTapTime: 0
+  Waitsleep: 0.4
+  rb: {fileID: 2040516861}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  _attackCooldown: 1
 --- !u!50 &2040516861
 Rigidbody2D:
   serializedVersion: 4
@@ -945,6 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 1
   _maxHealth: 1
+  animator: {fileID: 2040516859}
 --- !u!1 &2071344640
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2071344641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1027,8 +1035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6750a2efe69517c43b44a6fb8b12916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
-  _currentHealth: 10
+  _maxHealth: 1
+  _currentHealth: 1
 --- !u!50 &2071344643
 Rigidbody2D:
   serializedVersion: 4
