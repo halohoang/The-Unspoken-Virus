@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 342856180}
   - component: {fileID: 342856186}
   - component: {fileID: 342856183}
+  - component: {fileID: 342856182}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Ground
@@ -220,7 +221,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342856179}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -259,6 +260,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &342856182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342856179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e18c3dad5ed5d4bbc2dd67051a7ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _visionRange: 5.16
 --- !u!212 &342856183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -568,8 +583,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296555524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.62, y: -1.41, z: 0}
-  m_LocalScale: {x: 16.2603, y: 1, z: 1}
+  m_LocalPosition: {x: -0.045, y: -1.521, z: 0}
+  m_LocalScale: {x: 35.3543, y: 1.223278, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -766,7 +781,7 @@ GameObject:
   - component: {fileID: 2040516862}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
