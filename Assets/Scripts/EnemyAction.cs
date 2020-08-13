@@ -9,7 +9,7 @@ public class EnemyAction : MonoBehaviour
 
     private Transform _target;
 
-    public float stoppingDistance;
+    public float _stoppingDistance;
 
     [SerializeField]
     private float _visionRange;
@@ -22,6 +22,9 @@ public class EnemyAction : MonoBehaviour
 
     LayerMask attackMask;
 
+    [SerializeField]
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +34,32 @@ public class EnemyAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         float distance;
 
         Vector3 vector = _target.position - transform.position;
         distance = Mathf.Sqrt(vector.x * vector.x + vector.y * vector.y);
-        if (distance < _visionRange)
+        if (distance < _visionRange && distance > _stoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+            animator.SetBool("Walk", true);
         }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
+
+        //if(Vector2.Distance(transform.position, _target.position) > _stoppingDistance)
+        //{
+        //    transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed *Time.deltaTime);
+        //}
+
+        Attack();
+
+
+
+
     }
     public void Attack()
     {
@@ -47,7 +68,12 @@ public class EnemyAction : MonoBehaviour
         if (colInfo != null)
         {
             colInfo.GetComponent<PlayersHealth>().DealDamage(_attackDamage);
+            Debug.Log("Damage");
+        }
 
+        if (Vector2.Distance(transform.position, _target.position) <= _attackRange)
+        {
+         animator.SetTrigger("Attack");
         }
     }
     private void OnDrawGizmosSelected()
