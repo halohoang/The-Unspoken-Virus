@@ -350,3 +350,5 @@ $RECYCLE.BIN/
 
 #Enable Template folders
 !*[Tt]emplate*
+Assets/Scripts/PlayerAction.cs
+Assets/Scripts/PlayerAction.cs

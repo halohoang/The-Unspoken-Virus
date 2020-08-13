@@ -52,6 +52,8 @@ namespace SAE_Project
 		private float _attackCooldown = 1f;
 		private float _timer;
 
+
+
 		// Functions
 		//Move function
 		private void Move( )
