@@ -14,13 +14,12 @@ public class EnemyAction : MonoBehaviour
     [SerializeField]
     private float _visionRange;
 
-    [SerializeField]
-    private int _attackDamage;
+    public int _attackDamage = 10;
 
     [SerializeField]
     private float _attackRange;
 
-    LayerMask attackMask;
+    public LayerMask attackMask;
 
     [SerializeField]
     Animator animator;
@@ -56,10 +55,6 @@ public class EnemyAction : MonoBehaviour
         //}
 
         Attack();
-
-
-
-
     }
     public void Attack()
     {
