@@ -278,6 +278,9 @@ MonoBehaviour:
   _visionRange: 4
   _attackDamage: 10
   _attackRange: 1.66
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 512
   animator: {fileID: 342856184}
 --- !u!212 &342856183
 SpriteRenderer:
@@ -375,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6750a2efe69517c43b44a6fb8b12916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 1
   _currentHealth: 1
 --- !u!1 &519420028
 GameObject:
@@ -2576,8 +2579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d795feda2a81d40a206693c5d9e0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 100
-  _maxHealth: 100
+  _currentHealth: 10
+  _maxHealth: 10
   animator: {fileID: 2040516859}
 --- !u!1 &2071344640
 GameObject:
