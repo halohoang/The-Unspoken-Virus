@@ -11,6 +11,7 @@ namespace SAE_Project
 
 		[SerializeField]
 		Animator animator;
+
 		[SerializeField]
 		private float _speed;
 		[SerializeField]
