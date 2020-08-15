@@ -38,6 +38,15 @@ namespace SAE_Project
 			
 		}
 
+		//when colliding with the traps is going to destroy the player 
+		public void OnTriggerEnter2D(Collider2D other)
+		{
+			if (other.CompareTag("Spike"))
+			{
+				Destroy(this.gameObject);
+			}
+		}
+
 		public Faction GetFaction( )
 		{
 			return Faction.Player;
