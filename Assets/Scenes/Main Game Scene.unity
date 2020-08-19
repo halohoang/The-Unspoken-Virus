@@ -301,7 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f33f1d473531b54bb50f0daf2d16e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 2
 --- !u!1 &342856179
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e18c3dad5ed5d4bbc2dd67051a7ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 5
   _stoppingDistance: 1
   _visionRange: 4
   _attackDamage: 10
@@ -811,7 +810,7 @@ GameObject:
   - component: {fileID: 626747025}
   m_Layer: 0
   m_Name: ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3051,7 +3050,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040516855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8, y: 0.19, z: 0}
+  m_LocalPosition: {x: -3.12, y: 1.6, z: 0}
   m_LocalScale: {x: 6.1499996, y: 6, z: 6.601908}
   m_Children:
   - {fileID: 321932607}
@@ -3129,10 +3128,10 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 2040516861}
   shootPoint: {fileID: 672516524}
   _camera: {fileID: 519420031}
-  dashDistance: 5
+  dashDistance: 20
   IsDashing: 0
   DoubleTapTime: 0
-  Waitsleep: 0.4
+  Waitsleep: 0.1
   rb: {fileID: 2040516861}
   EnemyLayer:
     serializedVersion: 2

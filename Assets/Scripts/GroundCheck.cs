@@ -12,7 +12,7 @@ namespace SAE_Project
 		//
 		//Hayoon, Please note what i am doing because this is important for your map creation & integration
 		//
-		public float gravity = 0.8f;
+		//public float gravity = 0.8f;
 		bool isGrounded;
 
 
