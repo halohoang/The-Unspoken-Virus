@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 321932607}
   - component: {fileID: 321932608}
   - component: {fileID: 321932609}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &342856180
 Rigidbody2D:
   serializedVersion: 4
@@ -385,8 +385,8 @@ MonoBehaviour:
   _speed: 5
   _stoppingDistance: 1
   _visionRange: 4
-  _attackDamage: 10
-  _attackRange: 1.66
+  _attackDamage: 14
+  _attackRange: 1.68
   attackMask:
     serializedVersion: 2
     m_Bits: 512
@@ -489,6 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 1
   _currentHealth: 1
+  _animator: {fileID: 342856184}
 --- !u!1001 &360210696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3375,6 +3376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 1
   _currentHealth: 1
+  _animator: {fileID: 0}
 --- !u!50 &1504410944
 Rigidbody2D:
   serializedVersion: 4
@@ -3460,8 +3462,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595635280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.163, y: 0.023, z: -0.3208296}
-  m_LocalScale: {x: 0.058063023, y: 0.058063023, z: 0.15345228}
+  m_LocalPosition: {x: 0.25, y: 0.023, z: -0.3208296}
+  m_LocalScale: {x: 0.0689092, y: 0.080106944, z: 0.18211716}
   m_Children: []
   m_Father: {fileID: 2040516857}
   m_RootOrder: 1
@@ -3546,7 +3548,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908145151}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3644,7 +3646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908145151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.68, y: 0.94, z: -25.823412}
+  m_LocalPosition: {x: 27.68, y: 0.94, z: 0.28}
   m_LocalScale: {x: 2.1232812, y: 2.2373867, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3731,7 +3733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040516855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.12, y: 1.6, z: 0}
+  m_LocalPosition: {x: -4.17, y: 1.6, z: 0}
   m_LocalScale: {x: 6.1499996, y: 6, z: 6.601908}
   m_Children:
   - {fileID: 321932607}
@@ -3938,6 +3940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 1
   _currentHealth: 1
+  _animator: {fileID: 0}
 --- !u!50 &2071344643
 Rigidbody2D:
   serializedVersion: 4

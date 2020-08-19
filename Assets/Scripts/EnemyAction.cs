@@ -53,23 +53,24 @@ public class EnemyAction : MonoBehaviour
         //{
         //    transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed *Time.deltaTime);
         //}
+            if (Vector2.Distance(transform.position, _target.position) <= _attackRange)
+            {
+             animator.SetTrigger("Attack");
+            }
 
-        Attack();
     }
     public void Attack()
     {
+        
         Collider2D colInfo = Physics2D.OverlapCircle(transform.position, _attackRange, attackMask);
 
         if (colInfo != null)
         {
             colInfo.GetComponent<PlayersHealth>().DealDamage(_attackDamage);
             Debug.Log("Damage");
+
         }
 
-        if (Vector2.Distance(transform.position, _target.position) <= _attackRange)
-        {
-         animator.SetTrigger("Attack");
-        }
     }
     private void OnDrawGizmosSelected()
     {

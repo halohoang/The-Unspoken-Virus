@@ -30,9 +30,10 @@ namespace SAE_Project
 
 			if (_currentHealth <= 0)
 			{
-				//Destroy(gameObject);
+
 				animator.SetTrigger("IsDead");
 				Debug.Log(_currentHealth);
+				Destroy(gameObject);
 			}
 
 			

@@ -6,9 +6,11 @@ namespace SAE_Project
     public class EnemiesHealth : MonoBehaviour, IDamageable
     {   //Variables
         [SerializeField]
-        private int _maxHealth =1;
+        private int _maxHealth = 1;
         [SerializeField]
         private int _currentHealth;
+        [SerializeField]
+        private Animator _animator;
         void Start()
         {
             _currentHealth = _maxHealth;
@@ -27,6 +29,7 @@ namespace SAE_Project
 
         void Die()
         {
+           
             Debug.Log("Enemy died!");
             Destroy(gameObject);
         }
