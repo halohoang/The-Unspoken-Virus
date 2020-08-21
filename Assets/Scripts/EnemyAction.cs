@@ -53,7 +53,7 @@ public class EnemyAction : MonoBehaviour
         //{
         //    transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed *Time.deltaTime);
         //}
-            if (Vector2.Distance(transform.position, _target.position) <= _attackRange)
+            if (distance <= _attackRange)
             {
              animator.SetTrigger("Attack");
             }
