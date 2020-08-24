@@ -226,5 +226,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aa2d8a7b558413b97988f31a00dd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelToLoad: 0
+  LevelToLoad: 3
   EIcon: {fileID: 1950716744870518941}
