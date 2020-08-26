@@ -258,7 +258,7 @@ MonoBehaviour:
   _attackRange: 1
   _attackDamage: 10
   isGrounded: 0
-  _projectilePrefab: {fileID: 5496299056026963956, guid: 1c3892a2e9e009443857946ac1bc15ed,
+  _projectilePrefab: {fileID: 4562672541876710009, guid: fc5f0c87386b594418b5f83d2837c9c3,
     type: 3}
   _rigidbody2D: {fileID: 6190010809204816667}
   shootPoint: {fileID: 6190010808424014410}

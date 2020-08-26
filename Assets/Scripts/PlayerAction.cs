@@ -71,11 +71,12 @@ namespace SAE_Project
             Vector3 characterScale = transform.localScale;
             if (inputHorizontal < 0)
             {
-                characterScale.x = -6;
+                GetComponent<SpriteRenderer>().flipX = true;
             }
             if (inputHorizontal > 0)
             {
-                characterScale.x = 6;
+                GetComponent<SpriteRenderer>().flipX = false;
+
             }
             transform.localScale = characterScale;
             //Start Player moving animation
@@ -196,7 +197,7 @@ namespace SAE_Project
             {
                 Vector3 position = ray.GetPoint(distance);
                 Vector3 direction = (position - transform.position).normalized;
-                Projectile projectile = new Projectile();
+                Projectile projectile;
 
                 //Flip player sprite
                 Vector3 mousePosition = Input.mousePosition; // Give mouse position to screenspace
@@ -217,9 +218,8 @@ namespace SAE_Project
                 {
                     projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
                     _timer = _attackCooldown;
-                }
-
                 projectile.transform.right = direction;
+                }
             }
         }
 
