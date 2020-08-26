@@ -19,7 +19,12 @@ public class EnemyAction : MonoBehaviour
     [SerializeField]
     private float _attackRange;
 
+    [SerializeField]
+    private float _blockingRange;
+
     public LayerMask attackMask;
+
+   
 
     [SerializeField]
     Animator animator;
@@ -43,22 +48,35 @@ public class EnemyAction : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
             animator.SetBool("Walk", true);
+            
         }
         else
         {
+            
             animator.SetBool("Walk", false);
         }
 
+        if(_target.position.x < transform.position.x)
+		{
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+		else
+		{
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        
         //if(Vector2.Distance(transform.position, _target.position) > _stoppingDistance)
         //{
         //    transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed *Time.deltaTime);
         //}
-            if (distance <= _attackRange)
-            {
+        if (distance <= _attackRange)
+        {
              animator.SetTrigger("Attack");
-            }
+        }
 
     }
+
+
     public void Attack()
     {
         
@@ -72,10 +90,12 @@ public class EnemyAction : MonoBehaviour
         }
 
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, _visionRange);
         Gizmos.DrawWireSphere(transform.position, _attackRange);
+        Gizmos.DrawWireSphere(transform.position, _blockingRange);
     }
 
 

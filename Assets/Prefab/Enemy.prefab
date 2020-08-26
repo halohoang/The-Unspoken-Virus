@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _stoppingDistance: 1
-  _visionRange: 4
+  _visionRange: 5.02
   _attackDamage: 14
   _attackRange: 1.68
   attackMask:
