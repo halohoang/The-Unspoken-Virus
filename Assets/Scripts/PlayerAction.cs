@@ -60,7 +60,7 @@ namespace SAE_Project
 
         // Functions
         //Move function
-        private void Move()
+        public void Move()
         {
             //shorten the Horizontal input
             float inputHorizontal = Input.GetAxis("Horizontal");
@@ -197,6 +197,22 @@ namespace SAE_Project
                 Vector3 position = ray.GetPoint(distance);
                 Vector3 direction = (position - transform.position).normalized;
                 Projectile projectile = new Projectile();
+
+                //Flip player sprite
+                Vector3 mousePosition = Input.mousePosition; // Give mouse position to screenspace
+                mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //change mouse position to worldspace
+
+                if (mousePosition.x > transform.position.x )
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+
+                }
+
                 if (_timer <= 0)
                 {
                     projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
@@ -206,17 +222,17 @@ namespace SAE_Project
                 projectile.transform.right = direction;
             }
         }
+
         void Update()
         {
+           
+
             //Make character dash
             Dash();
             if (!IsDashing)
             {
                 Move();
             }
-
-            ////Make Character move
-            //Move();
 
             //Related to Groundcheck class
             if (isGrounded)
