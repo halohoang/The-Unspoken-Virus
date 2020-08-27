@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Spike
   - GameMaster
+  - Shield
   layers:
   - Default
   - TransparentFX

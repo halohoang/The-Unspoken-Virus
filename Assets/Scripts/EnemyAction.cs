@@ -22,9 +22,10 @@ public class EnemyAction : MonoBehaviour
     [SerializeField]
     private float _blockingRange;
 
+    //block and attack
+
     public LayerMask attackMask;
 
-   
 
     [SerializeField]
     Animator animator;

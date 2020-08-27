@@ -105,7 +105,6 @@ namespace SAE_Project
 
                     lastKeyCode = KeyCode.A;
                 }
-                
                 //Dash Right
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
@@ -113,8 +112,6 @@ namespace SAE_Project
                     {
                         StartCoroutine(Dash(1f));
                         animator.SetBool("IsDashing", true);
-
-
                     }
                     else
                     {
@@ -162,14 +159,19 @@ namespace SAE_Project
                 animator.SetBool("IsDashing", false);
                 animator.SetBool("IsFalling", true);
                 animator.SetBool("IsJumping", false);
-
-
             }
         }
 
         //Attack Function
         public void Attack()
         {
+            //change the vector2.right to the direction where the player is looking 
+            RaycastHit2D hitShield = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Abs(transform.position.x - attackPoint.position.x) + _attackRange);
+            
+            if (hitShield.collider != null && hitShield.collider.CompareTag("Shield"))
+            {
+                return;
+			}
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
 
             foreach (Collider2D enemy in hitEnemies)
