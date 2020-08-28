@@ -45,7 +45,7 @@ public class EnemyAction : MonoBehaviour
 
         Vector3 vector = _target.position - transform.position;
         distance = Mathf.Sqrt(vector.x * vector.x + vector.y * vector.y);
-        if (distance < _visionRange && distance > _stoppingDistance)
+        if (distance < _visionRange && distance > _blockingRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
             animator.SetBool("Walk", true);
@@ -70,14 +70,17 @@ public class EnemyAction : MonoBehaviour
         //{
         //    transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed *Time.deltaTime);
         //}
-        if (distance <= _attackRange)
-        {
-             animator.SetTrigger("Attack");
-        }
-
+       
+        if(distance <= _blockingRange)
+		{
+            animator.SetTrigger("Block");
+		}
     }
 
-
+    public void OnBlockEnding()
+	{
+        animator.SetTrigger("Attack");
+    }
     public void Attack()
     {
         
