@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8882258303359960236}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,9 +166,10 @@ MonoBehaviour:
   _visionRange: 5.02
   _attackDamage: 14
   _attackRange: 1.68
+  _blockingRange: 0
   attackMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   animator: {fileID: 8882258303359960236}
 --- !u!95 &8882258303359960236
 Animator:
