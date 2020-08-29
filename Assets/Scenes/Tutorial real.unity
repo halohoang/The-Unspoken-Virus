@@ -1595,7 +1595,7 @@ PrefabInstance:
     - target: {fileID: 5321900790364864089, guid: 72278e9abc142415c9d9923e6a96683e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5321900790364864089, guid: 72278e9abc142415c9d9923e6a96683e,
         type: 3}
@@ -5675,7 +5675,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7.79
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6046,6 +6046,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8882258303359960231, guid: d95d1983d76f41844bee1f015fb5597c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8882258303359960237, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6084,7 +6089,7 @@ PrefabInstance:
     - target: {fileID: 8882258303359960237, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8882258303359960237, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
@@ -7153,7 +7158,7 @@ PrefabInstance:
     - target: {fileID: 3718583966485092736, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3718583966485092736, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
@@ -7184,6 +7189,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 8.940714
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718583966485092741, guid: 63bc1a17862170b4ab9938f7442a4953,
+        type: 3}
+      propertyPath: EnemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718583966485092741, guid: 63bc1a17862170b4ab9938f7442a4953,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 831588271}
+    - target: {fileID: 3718583966485092743, guid: 63bc1a17862170b4ab9938f7442a4953,
+        type: 3}
+      propertyPath: _maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718583966485092743, guid: 63bc1a17862170b4ab9938f7442a4953,
+        type: 3}
+      propertyPath: _currentHealth
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3718583966485092750, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
