@@ -2995,7 +2995,7 @@ PrefabInstance:
     - target: {fileID: 3718583966485092743, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
       propertyPath: _maxHealth
-      value: 100000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3718583966485092750, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
@@ -3098,7 +3098,12 @@ PrefabInstance:
     - target: {fileID: 8882258303359960226, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
       propertyPath: _attackRange
-      value: 3.4
+      value: 2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882258303359960226, guid: d95d1983d76f41844bee1f015fb5597c,
+        type: 3}
+      propertyPath: attackMask.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8882258303359960231, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}

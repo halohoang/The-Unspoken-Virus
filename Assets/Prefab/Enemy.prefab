@@ -88,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 8882258303359960231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8, y: 0.56, z: 0}
-  m_LocalScale: {x: 4.4069986, y: 4.4069986, z: 4.4069986}
+  m_LocalScale: {x: 5.9269724, y: 5.9269724, z: 5.9269724}
   m_Children:
   - {fileID: 4356110717173511621}
   m_Father: {fileID: 0}
@@ -223,11 +223,11 @@ MonoBehaviour:
   _stoppingDistance: 1
   _visionRange: 5.02
   _attackDamage: 14
-  _attackRange: 1.68
-  _blockingRange: 0
+  _attackRange: 4.5
+  _blockingRange: 4.47
   attackMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   animator: {fileID: 8882258303359960236}
 --- !u!95 &8882258303359960236
 Animator:
