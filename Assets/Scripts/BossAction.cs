@@ -12,7 +12,17 @@ public class BossAction : MonoBehaviour
 	private float _waitTime;
 
 	public Transform[] _moveSpots;
+
 	private int _randomSpot;
+
+	private float _timeBtwShots;
+
+	public float _startTimeBtwShots;
+
+	public GameObject _projectile;
+
+	private Transform _player;
+
 
 	 void Start()
 	 {
@@ -34,6 +44,17 @@ public class BossAction : MonoBehaviour
 			else
 			{
 				_waitTime -= Time.deltaTime; 
+			}
+
+
+			if(_timeBtwShots <= 0)
+			{
+				Instantiate(_projectile, transform.position, Quaternion.identity);
+				_timeBtwShots = _startTimeBtwShots;
+			}
+			else
+			{
+				_timeBtwShots -= Time.deltaTime;
 			}
 		}
 	 }
