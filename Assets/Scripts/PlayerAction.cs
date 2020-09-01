@@ -177,6 +177,7 @@ namespace SAE_Project
             foreach (Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<IDamageable>().DealDamage(_attackDamage);
+                
             }
         }
         //Deploy Gizmos for attack function

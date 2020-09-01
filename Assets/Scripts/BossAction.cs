@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SAE_Project;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,24 +11,24 @@ public class BossAction : MonoBehaviour
 
 	private float _waitTime;
 
-	public Transform[] moveSpots;
-	private int randomSpot;
+	public Transform[] _moveSpots;
+	private int _randomSpot;
 
 	 void Start()
 	 {
 		_waitTime = _startWaitTime;
-		randomSpot = Random.Range(0, moveSpots.Length);
+		_randomSpot = Random.Range(0, _moveSpots.Length);
 	
 	 }
 
 	 void Update()
 	 {
-		transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, _speed * Time.deltaTime);
-		if(Vector2.Distance (transform.position, moveSpots[randomSpot].position)< 0.2f)
+		transform.position = Vector2.MoveTowards(transform.position, _moveSpots[_randomSpot].position, _speed * Time.deltaTime);
+		if(Vector2.Distance (transform.position, _moveSpots[_randomSpot].position)< 0.2f)
 		{
 			if(_waitTime <= 0)
 			{
-				randomSpot = Random.Range(0, moveSpots.Length);
+				_randomSpot = Random.Range(0, _moveSpots.Length);
 				_waitTime = _startWaitTime;
 			}
 			else
