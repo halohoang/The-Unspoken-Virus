@@ -19,6 +19,8 @@ namespace SAE_Project
 		//Functions
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
+			attackPoint = collision.GetComponentInChildren<Transform>();
+			
 			RaycastHit2D hitShield = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Abs(transform.position.x - attackPoint.position.x) + _attackRange);
 
 			if (hitShield.collider != null && hitShield.collider.CompareTag("Shield"))

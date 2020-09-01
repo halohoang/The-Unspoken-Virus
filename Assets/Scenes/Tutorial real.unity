@@ -6968,12 +6968,12 @@ PrefabInstance:
     - target: {fileID: 3718583966485092736, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.15
+      value: 26.59
       objectReference: {fileID: 0}
     - target: {fileID: 3718583966485092736, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: -6.17
       objectReference: {fileID: 0}
     - target: {fileID: 3718583966485092736, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
@@ -7353,20 +7353,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7961724556094783647, guid: d95d1983d76f41844bee1f015fb5597c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8882258303359960226, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
-      propertyPath: _blockingRange
-      value: 2.34
-      objectReference: {fileID: 0}
+      propertyPath: _attackArea
+      value: 
+      objectReference: {fileID: 1901271445}
     - target: {fileID: 8882258303359960226, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
-      propertyPath: _attackRange
-      value: 2.27
+      propertyPath: _turnCooldownf
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8882258303359960231, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
@@ -7376,7 +7371,7 @@ PrefabInstance:
     - target: {fileID: 8882258303359960237, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.31
+      value: 13.73
       objectReference: {fileID: 0}
     - target: {fileID: 8882258303359960237, guid: d95d1983d76f41844bee1f015fb5597c,
         type: 3}
@@ -8536,6 +8531,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1603390359941212761, guid: e6318b7fc923e4840990aad643b00b1f,
     type: 3}
   m_PrefabInstance: {fileID: 1899192022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1901271445 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7144682842978122908, guid: d95d1983d76f41844bee1f015fb5597c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1463391386}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1917703399
 PrefabInstance:

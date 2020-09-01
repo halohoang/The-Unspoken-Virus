@@ -31,7 +31,8 @@ namespace SAE_Project
         {
            
             Debug.Log("Enemy died!");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         public Faction GetFaction( )

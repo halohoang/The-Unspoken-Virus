@@ -33,7 +33,9 @@ namespace SAE_Project
 
 				animator.SetTrigger("IsDead");
 				Debug.Log(_currentHealth);
-				Destroy(gameObject);
+				
+				gameObject.SetActive(false);
+
 			}
 
 			
@@ -44,9 +46,10 @@ namespace SAE_Project
 		{
 			if (other.CompareTag("Spike"))
 			{
-				Destroy(this.gameObject);
-			}
-		}
+                gameObject.SetActive(false);
+
+            }
+        }
 
 		public Faction GetFaction( )
 		{
