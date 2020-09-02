@@ -98,6 +98,7 @@ MonoBehaviour:
   _speed: 10
   Team: 1
   _damage: 10
+  _range: 100
 --- !u!58 &-2678049132209916477
 CircleCollider2D:
   m_ObjectHideFlags: 0

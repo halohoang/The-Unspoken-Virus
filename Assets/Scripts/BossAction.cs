@@ -23,6 +23,9 @@ public class BossAction : MonoBehaviour
 
 	private Transform _player;
 
+	[SerializeField]
+	Animator animator;
+
 
 	 void Start()
 	 {
@@ -40,10 +43,12 @@ public class BossAction : MonoBehaviour
 			{
 				_randomSpot = Random.Range(0, _moveSpots.Length);
 				_waitTime = _startWaitTime;
+				animator.SetBool("Floating", true);
 			}
 			else
 			{
-				_waitTime -= Time.deltaTime; 
+				_waitTime -= Time.deltaTime;
+				animator.SetBool("Floating", false);
 			}
 
 

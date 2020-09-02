@@ -17,6 +17,10 @@ namespace SAE_Project.Assets.Scripts
 		[SerializeField]
 		private int _damage;
 
+		[SerializeField]
+		private float _range = 10;
+
+
 		private Transform attackPoint;
 		private void Start()
 		{
@@ -28,6 +32,10 @@ namespace SAE_Project.Assets.Scripts
 		private void Update()
 		{
 			transform.position = Vector2.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+			if(transform.position.x == _target.x && transform.position.y == _target.y)
+			{
+				DestroyProjectile();
+			}
 		}
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
@@ -39,10 +47,22 @@ namespace SAE_Project.Assets.Scripts
 					if (damage.GetFaction() != Team)
 					{
 						damage.DealDamage(_damage);
+						DestroyProjectile();
 					}
 				}
 			}
 			
+		}
+		public float LifeTime => _range / _speed;
+
+		private void OnEnable()
+		{
+			Destroy(gameObject, LifeTime);
+		}
+
+		private void DestroyProjectile()
+		{
+			Destroy(gameObject);
 		}
 	}
 }
