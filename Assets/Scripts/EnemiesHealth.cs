@@ -29,13 +29,13 @@ namespace SAE_Project
 
         void Die()
         {
-           
+
             Debug.Log("Enemy died!");
             //Destroy(gameObject);
             gameObject.SetActive(false);
         }
 
-        public Faction GetFaction( )
+        public Faction GetFaction()
         {
             return Faction.Enemy;
         }

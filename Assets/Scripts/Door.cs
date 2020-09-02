@@ -3,46 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour
+namespace SAE_Project
 {
-    public int LevelToLoad;
-    public GameObject EIcon;
-    private bool playerInDoor;
 
- 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Door : MonoBehaviour
     {
-        if (collision.CompareTag("Player"))
+        public int LevelToLoad;
+        public GameObject EIcon;
+        private bool playerInDoor;
+
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-
-        EIcon.SetActive(true);
-            playerInDoor = true;
-        }
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            EIcon.SetActive(false);
-            playerInDoor = false;
-
-        }
-
-
-    }
-
-    private void Update()
-    {
-        if (playerInDoor)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (collision.CompareTag("Player"))
             {
-                SceneManager.LoadScene(LevelToLoad);
+
+                EIcon.SetActive(true);
+                playerInDoor = true;
             }
         }
+
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                EIcon.SetActive(false);
+                playerInDoor = false;
+
+            }
+
+
+        }
+
+        private void Update()
+        {
+            if (playerInDoor)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    SceneManager.LoadScene(LevelToLoad);
+                }
+            }
+        }
+
     }
 
 }

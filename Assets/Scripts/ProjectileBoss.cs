@@ -5,64 +5,64 @@ using UnityEngine;
 
 namespace SAE_Project.Assets.Scripts
 {
-	public class ProjectileBoss : MonoBehaviour
-	{
-		public float _speed;
+    public class ProjectileBoss : MonoBehaviour
+    {
+        public float _speed;
 
-		private Transform _player;
+        private Transform _player;
 
-		private Vector2 _target;
-		public Faction Team;
+        private Vector2 _target;
+        public Faction Team;
 
-		[SerializeField]
-		private int _damage;
+        [SerializeField]
+        private int _damage;
 
-		[SerializeField]
-		private float _range = 10;
+        [SerializeField]
+        private float _range = 10;
 
 
-		private Transform attackPoint;
-		private void Start()
-		{
-			_player = GameObject.FindGameObjectWithTag("Player").transform;
+        private Transform attackPoint;
+        private void Start()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
 
-			_target = new Vector2(_player.position.x, _player.position.y);
-		}
+            _target = new Vector2(_player.position.x, _player.position.y);
+        }
 
-		private void Update()
-		{
-			transform.position = Vector2.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
-			if(transform.position.x == _target.x && transform.position.y == _target.y)
-			{
-				DestroyProjectile();
-			}
-		}
-		private void OnTriggerEnter2D(Collider2D collision)
-		{
+        private void Update()
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+            if (transform.position.x == _target.x && transform.position.y == _target.y)
+            {
+                DestroyProjectile();
+            }
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
 
-			if (collision.CompareTag("Player"))
-			{
-				if (collision.TryGetComponent(out IDamageable damage))
-				{
-					if (damage.GetFaction() != Team)
-					{
-						damage.DealDamage(_damage);
-						DestroyProjectile();
-					}
-				}
-			}
-			
-		}
-		public float LifeTime => _range / _speed;
+            if (collision.CompareTag("Player"))
+            {
+                if (collision.TryGetComponent(out IDamageable damage))
+                {
+                    if (damage.GetFaction() != Team)
+                    {
+                        damage.DealDamage(_damage);
+                        DestroyProjectile();
+                    }
+                }
+            }
 
-		private void OnEnable()
-		{
-			Destroy(gameObject, LifeTime);
-		}
+        }
+        public float LifeTime => _range / _speed;
 
-		private void DestroyProjectile()
-		{
-			Destroy(gameObject);
-		}
-	}
+        private void OnEnable()
+        {
+            Destroy(gameObject, LifeTime);
+        }
+
+        private void DestroyProjectile()
+        {
+            Destroy(gameObject);
+        }
+    }
 }

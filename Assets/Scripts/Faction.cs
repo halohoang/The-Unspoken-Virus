@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace SAE_Project
 {
-	public enum Faction
-	{
-		Player,
-		Enemy
-	}
+    public enum Faction
+    {
+        Player,
+        Enemy
+    }
 }

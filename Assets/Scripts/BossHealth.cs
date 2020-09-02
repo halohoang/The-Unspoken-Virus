@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace SAE_Project.Assets.Scripts
 {
-	public class BossHealth : MonoBehaviour, IDamageable
-	{
+    public class BossHealth : MonoBehaviour, IDamageable
+    {
 
         //Variables
         [SerializeField]

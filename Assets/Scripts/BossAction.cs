@@ -3,87 +3,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAction : MonoBehaviour
+namespace SAE_Project
 {
-	public float _speed;
 
-	public float _startWaitTime;
+    public class BossAction : MonoBehaviour
+    {
+        public float _speed;
 
-	private float _waitTime;
+        public float _startWaitTime;
 
-	public Transform[] _moveSpots;
+        private float _waitTime;
 
-	private int _randomSpot;
+        public Transform[] _moveSpots;
 
-	private float _timeBtwShots;
+        private int _randomSpot;
 
-	public float _startTimeBtwShots;
+        private float _timeBtwShots;
 
-	public GameObject _projectile;
+        public float _startTimeBtwShots;
 
-	public Transform _player;
+        public GameObject _projectile;
 
-	[SerializeField]
-	Animator animator;
+        public Transform _player;
+
+        [SerializeField]
+        Animator animator;
 
 
-	 void Start()
-	 {
-		_waitTime = _startWaitTime;
-		_randomSpot = Random.Range(0, _moveSpots.Length);
-	
-	 }
+        void Start()
+        {
+            _waitTime = _startWaitTime;
+            _randomSpot = Random.Range(0, _moveSpots.Length);
 
-	 void Update()
-	 {
-		transform.position = Vector2.MoveTowards(transform.position, _moveSpots[_randomSpot].position, _speed * Time.deltaTime);
-		if(Vector2.Distance (transform.position, _moveSpots[_randomSpot].position)< 0.2f)
-		{
-			if(_waitTime <= 0)
-			{
-				_randomSpot = Random.Range(0, _moveSpots.Length);
-				_waitTime = _startWaitTime;
+        }
 
-				
-			}
-			else
-			{
-				_waitTime -= Time.deltaTime;
-				
-			}
+        void Update()
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _moveSpots[_randomSpot].position, _speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, _moveSpots[_randomSpot].position) < 0.2f)
+            {
+                if (_waitTime <= 0)
+                {
+                    _randomSpot = Random.Range(0, _moveSpots.Length);
+                    _waitTime = _startWaitTime;
 
-		}
-		
-		Casting();
-		FlipSprite();
-	 }
 
-	public void FlipSprite()
-	{
-		if (_player.position.x < transform.position.x)
-		{
-			GetComponent<SpriteRenderer>().flipX = true;
-		}
-		else
-		{
-			GetComponent<SpriteRenderer>().flipX = false;
-		}
+                }
+                else
+                {
+                    _waitTime -= Time.deltaTime;
 
-	}
+                }
 
-	public void Casting()
-	{
-		if (_timeBtwShots <= 0)
-		{
-			Instantiate(_projectile, transform.position, Quaternion.identity);
-			_timeBtwShots = _startTimeBtwShots;
-			animator.SetTrigger("Casting");
-		}
-		else
-		{
-			_timeBtwShots -= Time.deltaTime;
-		}
-	}
+            }
 
+            Casting();
+            FlipSprite();
+        }
+
+        public void FlipSprite()
+        {
+            if (_player.position.x < transform.position.x)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+
+        }
+
+        public void Casting()
+        {
+            if (_timeBtwShots <= 0)
+            {
+                Instantiate(_projectile, transform.position, Quaternion.identity);
+                _timeBtwShots = _startTimeBtwShots;
+                animator.SetTrigger("Casting");
+            }
+            else
+            {
+                _timeBtwShots -= Time.deltaTime;
+            }
+        }
+
+
+    }
 
 }

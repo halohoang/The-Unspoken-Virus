@@ -7,17 +7,17 @@ using UnityEngine;
 
 namespace SAE_Project
 {
-	public class ResetTrigger : StateMachineBehaviour
-	{
-		//Variables
-		[Tooltip("The trigger you wish to reset")]
-		[SerializeField]
-		private string _trigger;
+    public class ResetTrigger : StateMachineBehaviour
+    {
+        //Variables
+        [Tooltip("The trigger you wish to reset")]
+        [SerializeField]
+        private string _trigger;
 
-		//Functions
-		public override void OnStateEnter (Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
-		{
-			animator.ResetTrigger(_trigger);
-		}
-	}
+        //Functions
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+        {
+            animator.ResetTrigger(_trigger);
+        }
+    }
 }

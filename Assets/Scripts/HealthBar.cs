@@ -6,27 +6,27 @@ using UnityEngine.UI;
 
 namespace SAE_Project.Assets.Scripts
 {
-	public class HealthBar : MonoBehaviour
-	{
+    public class HealthBar : MonoBehaviour
+    {
 
 
 
-		[SerializeField]
-		private Image _foreground;
+        [SerializeField]
+        private Image _foreground;
 
-		[SerializeField]
-		private BossHealth _health;
+        [SerializeField]
+        private BossHealth _health;
 
-		private void OnEnable()
-		{
-			_health.HealthChanged += OnHealthChanged;
-		}
+        private void OnEnable()
+        {
+            _health.HealthChanged += OnHealthChanged;
+        }
 
-		private void OnHealthChanged(float newHealth)
-		{
-			_foreground.fillAmount = newHealth;
-		}
+        private void OnHealthChanged(float newHealth)
+        {
+            _foreground.fillAmount = newHealth;
+        }
 
 
-	}
+    }
 }
