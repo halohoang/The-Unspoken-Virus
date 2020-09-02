@@ -120,7 +120,7 @@ namespace SAE_Project
 
                     lastKeyCode = KeyCode.D;
                 }
-               
+
             }
 
 
@@ -167,13 +167,13 @@ namespace SAE_Project
         {
             //change the vector2.right to the direction where the player is looking 
             RaycastHit2D hitShield = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Abs(transform.position.x - attackPoint.position.x) + _attackRange);
-            
+
             if (hitShield.collider != null && hitShield.collider.CompareTag("Shield"))
             {
                 return;
-			}
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
+            }
 
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
             foreach (Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<IDamageable>().DealDamage(_attackDamage);
@@ -205,10 +205,10 @@ namespace SAE_Project
                 Vector3 mousePosition = Input.mousePosition; // Give mouse position to screenspace
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //change mouse position to worldspace
 
-                if (mousePosition.x > transform.position.x )
+                if (mousePosition.x > transform.position.x)
                 {
                     GetComponent<SpriteRenderer>().flipX = false;
-                    
+
                 }
                 else
                 {
@@ -220,14 +220,14 @@ namespace SAE_Project
                 {
                     projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
                     _timer = _attackCooldown;
-                projectile.transform.right = direction;
+                    projectile.transform.right = direction;
                 }
             }
         }
 
         void Update()
         {
-           
+
 
             //Make character dash
             Dash();
