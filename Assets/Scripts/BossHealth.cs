@@ -13,8 +13,6 @@ namespace SAE_Project.Assets.Scripts
         private int _maxHealth;
         [SerializeField]
         private int _currentHealth;
-        [SerializeField]
-        private Animator _animator;
 
         public event Action<float> HealthChanged;
 

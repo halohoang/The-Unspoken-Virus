@@ -21,7 +21,7 @@ public class BossAction : MonoBehaviour
 
 	public GameObject _projectile;
 
-	private Transform _player;
+	public Transform _player;
 
 	[SerializeField]
 	Animator animator;
@@ -43,26 +43,47 @@ public class BossAction : MonoBehaviour
 			{
 				_randomSpot = Random.Range(0, _moveSpots.Length);
 				_waitTime = _startWaitTime;
-				animator.SetBool("Floating", true);
+
+				
 			}
 			else
 			{
 				_waitTime -= Time.deltaTime;
-				animator.SetBool("Floating", false);
+				
 			}
 
-
-			if(_timeBtwShots <= 0)
-			{
-				Instantiate(_projectile, transform.position, Quaternion.identity);
-				_timeBtwShots = _startTimeBtwShots;
-			}
-			else
-			{
-				_timeBtwShots -= Time.deltaTime;
-			}
 		}
+		
+		Casting();
+		FlipSprite();
 	 }
+
+	public void FlipSprite()
+	{
+		if (_player.position.x < transform.position.x)
+		{
+			GetComponent<SpriteRenderer>().flipX = true;
+		}
+		else
+		{
+			GetComponent<SpriteRenderer>().flipX = false;
+		}
+
+	}
+
+	public void Casting()
+	{
+		if (_timeBtwShots <= 0)
+		{
+			Instantiate(_projectile, transform.position, Quaternion.identity);
+			_timeBtwShots = _startTimeBtwShots;
+			animator.SetTrigger("Casting");
+		}
+		else
+		{
+			_timeBtwShots -= Time.deltaTime;
+		}
+	}
 
 
 }
