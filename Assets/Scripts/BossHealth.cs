@@ -15,6 +15,9 @@ namespace SAE_Project.Assets.Scripts
         private int _currentHealth;
         [SerializeField]
         private Animator _animator;
+
+        public event Action<float> HealthChanged;
+
         void Start()
         {
             _currentHealth = _maxHealth;
@@ -24,6 +27,8 @@ namespace SAE_Project.Assets.Scripts
         public void DealDamage(int damage)
         {
             _currentHealth -= damage;
+
+            HealthChanged?.Invoke((float)_currentHealth / _maxHealth);
 
             if (_currentHealth <= 0)
             {
