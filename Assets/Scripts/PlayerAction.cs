@@ -172,12 +172,11 @@ namespace SAE_Project
             {
                 return;
 			}
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
 
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
             foreach (Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<IDamageable>().DealDamage(_attackDamage);
-                
             }
         }
         //Deploy Gizmos for attack function
