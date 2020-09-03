@@ -69,26 +69,22 @@ namespace SAE_Project
                 animator.SetBool("Walk", false);
             }
 
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
-
+            if (_target.position.x < transform.position.x)
             {
-                if (_target.position.x < transform.position.x)
-                {
 
-                    GetComponent<SpriteRenderer>().flipX = true;
-                    Debug.Log("Turn Left");
+                GetComponent<SpriteRenderer>().flipX = true;
+                Debug.Log("Turn Left");
 
-                }
-                else
-                {
-
-                    GetComponent<SpriteRenderer>().flipX = false;
-                    Debug.Log("Turn Right");
-
-                }
-                _timer = _turnCooldownf;
             }
+            else
+            {
+
+                GetComponent<SpriteRenderer>().flipX = false;
+                Debug.Log("Turn Right");
+
+            }
+
+
 
 
 

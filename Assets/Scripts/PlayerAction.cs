@@ -65,7 +65,7 @@ namespace SAE_Project
         public AudioSource JumpSound;
         public AudioSource FireBall;
         public AudioSource Dashing;
-
+        public AudioSource MeleeSwing;
 
 
 
@@ -188,6 +188,8 @@ namespace SAE_Project
         //Attack Function
         public void Attack()
         {
+            MeleeSwing.Play();
+
             //change the vector2.right to the direction where the player is looking 
             RaycastHit2D hitShield = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Abs(transform.position.x - attackPoint.position.x) + _attackRange);
 
