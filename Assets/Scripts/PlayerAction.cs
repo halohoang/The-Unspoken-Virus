@@ -1,6 +1,7 @@
 ﻿
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace SAE_Project
@@ -56,6 +57,15 @@ namespace SAE_Project
         private float _attackCooldown = 1f;
         private float _timer;
 
+        //SoundEffect
+        //public AudioSource audio;
+        //public AudioClip JumpSoundToPlay;
+        //public float Volume;
+        //public bool AlreadyPlayed = false;
+
+
+
+
 
 
         // Functions
@@ -86,7 +96,7 @@ namespace SAE_Project
         //Dash Function
         private void Dash()
         {
-            if (_touchedGround)
+            if (!isGrounded && _touchedGround )
             {
 
                 //Dash Left
@@ -96,6 +106,7 @@ namespace SAE_Project
                     {
                         StartCoroutine(Dash(-1f));
                         animator.SetBool("IsDashing", true);
+                        
                     }
                     else
                     {
@@ -148,6 +159,12 @@ namespace SAE_Project
             {
                 _rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
                 animator.SetBool("IsJumping", true);
+                
+                //if (!AlreadyPlayed)
+                //{
+                //    audio.PlayOneShot(JumpSoundToPlay, Volume);
+                //    AlreadyPlayed = true;
+                //}
             }
         }
 
@@ -224,6 +241,10 @@ namespace SAE_Project
                 }
             }
         }
+        //public void Start()
+        //{
+        //    audio = GetComponent<AudioSource>();
+        //}
 
         void Update()
         {
