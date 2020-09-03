@@ -64,6 +64,7 @@ namespace SAE_Project
         //public bool AlreadyPlayed = false;
         public AudioSource JumpSound;
         public AudioSource FireBall;
+        public AudioSource Dashing;
 
 
 
@@ -107,6 +108,7 @@ namespace SAE_Project
                     {
                         StartCoroutine(Dash(-1f));
                         animator.SetBool("IsDashing", true);
+                        Dashing.Play();
                         
                     }
                     else
@@ -124,6 +126,8 @@ namespace SAE_Project
                     {
                         StartCoroutine(Dash(1f));
                         animator.SetBool("IsDashing", true);
+                        Dashing.Play();
+
                     }
                     else
                     {
