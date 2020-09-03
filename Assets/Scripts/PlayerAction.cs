@@ -87,12 +87,15 @@ namespace SAE_Project
             Vector3 characterScale = transform.localScale;
             if (inputHorizontal < 0)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                characterScale.x = -8;
+               // GetComponent<SpriteRenderer>().flipX = true;
                 //WalkSound.Play();
             }
             if (inputHorizontal > 0)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                characterScale.x = 8;
+
+                //GetComponent<SpriteRenderer>().flipX = false;
                 //WalkSound.Play();
 
             }
@@ -206,6 +209,7 @@ namespace SAE_Project
             {
                 return;
             }
+
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
             foreach (Collider2D enemy in hitEnemies)
