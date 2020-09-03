@@ -272,6 +272,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _attackCooldown: 1
+  JumpSound: {fileID: 0}
+  FireBall: {fileID: 0}
+  Dashing: {fileID: 0}
+  MeleeSwing: {fileID: 0}
 --- !u!50 &3718583966485092740
 Rigidbody2D:
   serializedVersion: 4
