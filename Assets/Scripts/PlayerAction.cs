@@ -66,9 +66,9 @@ namespace SAE_Project
         public AudioSource FireBall;
         public AudioSource Dashing;
         public AudioSource MeleeSwing;
-        public AudioSource WalkSound;
-        public bool AlreadyPlayed = false;
-        public bool IsMoving = false;
+        //public AudioSource WalkSound;
+        //public bool AlreadyPlayed = false;
+        //public bool IsMoving = false;
 
 
 
@@ -88,12 +88,12 @@ namespace SAE_Project
             if (inputHorizontal < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
-                WalkSound.Play();
+                //WalkSound.Play();
             }
             if (inputHorizontal > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
-                WalkSound.Play();
+                //WalkSound.Play();
 
             }
             transform.localScale = characterScale;
@@ -260,33 +260,33 @@ namespace SAE_Project
                 }
             }
         }
-        public void Start()
-        {
-            _rigidbody2D = GetComponent<Rigidbody2D>();
-            WalkSound = GetComponent<AudioSource>();
-        }
+        //public void Start()
+        //{
+        //    _rigidbody2D = GetComponent<Rigidbody2D>();
+        //    WalkSound = GetComponent<AudioSource>();
+        //}
 
         void Update()
         {
-            if (_rigidbody2D.velocity.x != 0)
-            {
-                IsMoving = true;
-            }
-            else
-            {
-                IsMoving = false;
-            }
-            if(IsMoving)
-            {
-                if (!WalkSound.isPlaying)
-                {
-                    WalkSound.Play();
-                }
-            }
-            else
-            {
-                WalkSound.Stop();
-            }
+            //if (_rigidbody2D.velocity.x != 0)
+            //{
+            //    IsMoving = true;
+            //}
+            //else
+            //{
+            //    IsMoving = false;
+            //}
+            //if(IsMoving)
+            //{
+            //    if (!WalkSound.isPlaying)
+            //    {
+            //        WalkSound.Play();
+            //    }
+            //}
+            //else
+            //{
+            //    WalkSound.Stop();
+            //}
 
 
             //Make character dash
