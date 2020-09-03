@@ -63,7 +63,7 @@ namespace SAE_Project
         //public float Volume;
         //public bool AlreadyPlayed = false;
         public AudioSource JumpSound;
-
+        public AudioSource FireBall;
 
 
 
@@ -237,9 +237,11 @@ namespace SAE_Project
 
                 if (_timer <= 0)
                 {
+                    FireBall.Play();
                     projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
                     _timer = _attackCooldown;
                     projectile.transform.right = direction;
+                    
                 }
             }
         }
