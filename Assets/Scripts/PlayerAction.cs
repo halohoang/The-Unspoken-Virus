@@ -56,6 +56,15 @@ namespace SAE_Project
         private float _attackCooldown = 1f;
         private float _timer;
 
+        //SoundEffect
+        //public AudioSource audio;
+        //public AudioClip JumpSoundToPlay;
+        //public float Volume;
+        //public bool AlreadyPlayed = false;
+
+
+
+
 
 
         // Functions
@@ -86,7 +95,7 @@ namespace SAE_Project
         //Dash Function
         private void Dash()
         {
-            if (_touchedGround)
+            if (!isGrounded)
             {
 
                 //Dash Left
@@ -148,6 +157,12 @@ namespace SAE_Project
             {
                 _rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
                 animator.SetBool("IsJumping", true);
+                
+                //if (!AlreadyPlayed)
+                //{
+                //    audio.PlayOneShot(JumpSoundToPlay, Volume);
+                //    AlreadyPlayed = true;
+                //}
             }
         }
 
@@ -224,6 +239,10 @@ namespace SAE_Project
                 }
             }
         }
+        //public void Start()
+        //{
+        //    audio = GetComponent<AudioSource>();
+        //}
 
         void Update()
         {
