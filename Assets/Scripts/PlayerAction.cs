@@ -66,6 +66,9 @@ namespace SAE_Project
         public AudioSource FireBall;
         public AudioSource Dashing;
         public AudioSource MeleeSwing;
+        public AudioSource WalkSound;
+        public bool AlreadyPlayed = false;
+        public bool IsMoving = false;
 
 
 
@@ -74,6 +77,7 @@ namespace SAE_Project
         //Move function
         public void Move()
         {
+            
             //shorten the Horizontal input
             float inputHorizontal = Input.GetAxis("Horizontal");
             //Move the sprite in horizontal direction
@@ -84,15 +88,20 @@ namespace SAE_Project
             if (inputHorizontal < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
+                WalkSound.Play();
             }
             if (inputHorizontal > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
+                WalkSound.Play();
 
             }
             transform.localScale = characterScale;
+            
+
             //Start Player moving animation
             animator.SetBool("IsRunning", Mathf.Abs(inputHorizontal) > 0.1f);
+
         }
 
         //Dash Function
@@ -251,13 +260,33 @@ namespace SAE_Project
                 }
             }
         }
-        //public void Start()
-        //{
-        //    audio = GetComponent<AudioSource>();
-        //}
+        public void Start()
+        {
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            WalkSound = GetComponent<AudioSource>();
+        }
 
         void Update()
         {
+            if (_rigidbody2D.velocity.x != 0)
+            {
+                IsMoving = true;
+            }
+            else
+            {
+                IsMoving = false;
+            }
+            if(IsMoving)
+            {
+                if (!WalkSound.isPlaying)
+                {
+                    WalkSound.Play();
+                }
+            }
+            else
+            {
+                WalkSound.Stop();
+            }
 
 
             //Make character dash
