@@ -62,6 +62,7 @@ namespace SAE_Project
         //public AudioClip JumpSoundToPlay;
         //public float Volume;
         //public bool AlreadyPlayed = false;
+        public AudioSource JumpSound;
 
 
 
@@ -159,6 +160,7 @@ namespace SAE_Project
             {
                 _rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
                 animator.SetBool("IsJumping", true);
+                JumpSound.Play();
                 
                 //if (!AlreadyPlayed)
                 //{
