@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 8882258303359960236}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Lmao
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6750a2efe69517c43b44a6fb8b12916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1
+  _maxHealth: 10
   _currentHealth: 1
   _animator: {fileID: 8882258303359960236}
 --- !u!212 &8882258303359960227

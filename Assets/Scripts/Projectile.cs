@@ -34,6 +34,11 @@ namespace SAE_Project
                     damage.DealDamage(_damage);
                 }
             }
+            if (collision.CompareTag("Lmao"))
+            {
+
+                gameObject.SetActive(false);
+            }
         }
     }
 }

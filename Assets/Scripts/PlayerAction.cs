@@ -1,4 +1,5 @@
 ﻿
+using SAE_Project.Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
@@ -70,6 +71,10 @@ namespace SAE_Project
         //public bool AlreadyPlayed = false;
         //public bool IsMoving = false;
 
+        //FadeOut effect
+        public FadeOut AfterImage;
+
+
 
 
 
@@ -88,16 +93,22 @@ namespace SAE_Project
             if (inputHorizontal < 0)
             {
                 characterScale.x = -8;
+                AfterImage.GenerateAfterImages = true;
                // GetComponent<SpriteRenderer>().flipX = true;
                 //WalkSound.Play();
             }
-            if (inputHorizontal > 0)
+           else if (inputHorizontal > 0)
             {
                 characterScale.x = 8;
+                AfterImage.GenerateAfterImages = true;
 
                 //GetComponent<SpriteRenderer>().flipX = false;
                 //WalkSound.Play();
 
+            }
+            else
+            {
+                AfterImage.GenerateAfterImages = false;
             }
             transform.localScale = characterScale;
             
@@ -209,7 +220,6 @@ namespace SAE_Project
             {
                 return;
             }
-
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, _attackRange, EnemyLayer);
             foreach (Collider2D enemy in hitEnemies)
