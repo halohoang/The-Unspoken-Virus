@@ -41,7 +41,7 @@ namespace SAE_Project.Assets.Scripts
                     _currentFade.transform.localScale = this.transform.localScale;
                     _currentFade.GetComponent<SpriteRenderer>().sprite = _currentSprite;
                     _FadeDelaySeconds = FadeDelay;
-                    Destroy(_currentFade, 1f);
+                    Destroy(_currentFade, 2f);
                 }
             }
         }
