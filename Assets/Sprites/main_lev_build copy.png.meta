@@ -20,6 +20,24 @@ TextureImporter:
   - first:
       213: -4695542525459718771
     second: main_lev_build copy_5
+  - first:
+      213: 7517722537553722303
+    second: main_lev_build copy_6
+  - first:
+      213: -3589448807467377857
+    second: main_lev_build copy_7
+  - first:
+      213: 287307077011748720
+    second: main_lev_build copy_8
+  - first:
+      213: -8543168860734113785
+    second: main_lev_build copy_9
+  - first:
+      213: 1954298583244728026
+    second: main_lev_build copy_10
+  - first:
+      213: 1393337810531519699
+    second: main_lev_build copy_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -230,7 +248,7 @@ TextureImporter:
         width: 32
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,6 +256,132 @@ TextureImporter:
       bones: []
       spriteID: d8d9b3e73f416deb0800000000000000
       internalID: -4695542525459718771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_lev_build copy_6
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 1136
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb76da31d0545860800000000000000
+      internalID: 7517722537553722303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_lev_build copy_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 928
+        width: 32
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b157bc357bf2ec0800000000000000
+      internalID: -3589448807467377857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_lev_build copy_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1008
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077bdbaa348bcf300800000000000000
+      internalID: 287307077011748720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_lev_build copy_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 928
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708b3cf4f21907980800000000000000
+      internalID: -8543168860734113785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_lev_build copy_10
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1008
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6e95705301f1b10800000000000000
+      internalID: 1954298583244728026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_lev_build copy_11
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 928
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc0ad04b51265310800000000000000
+      internalID: 1393337810531519699
       vertices: []
       indices: 
       edges: []
