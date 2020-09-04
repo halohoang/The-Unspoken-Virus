@@ -1,6 +1,8 @@
 ﻿
+using SAE_Project.Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace SAE_Project
@@ -56,12 +58,31 @@ namespace SAE_Project
         private float _attackCooldown = 1f;
         private float _timer;
 
+        //SoundEffect
+        //public AudioSource audio;
+        //public AudioClip JumpSoundToPlay;
+        //public float Volume;
+        //public bool AlreadyPlayed = false;
+        public AudioSource JumpSound;
+        public AudioSource FireBall;
+        public AudioSource Dashing;
+        public AudioSource MeleeSwing;
+        //public AudioSource WalkSound;
+        //public bool AlreadyPlayed = false;
+        //public bool IsMoving = false;
+
+        //FadeOut effect
+        public FadeOut AfterImage;
+
+
+
 
 
         // Functions
         //Move function
         public void Move()
         {
+            
             //shorten the Horizontal input
             float inputHorizontal = Input.GetAxis("Horizontal");
             //Move the sprite in horizontal direction
@@ -71,22 +92,36 @@ namespace SAE_Project
             Vector3 characterScale = transform.localScale;
             if (inputHorizontal < 0)
             {
-                GetComponent<SpriteRenderer>().flipX = true;
+                characterScale.x = -8;
+                AfterImage.GenerateAfterImages = true;
+               // GetComponent<SpriteRenderer>().flipX = true;
+                //WalkSound.Play();
             }
-            if (inputHorizontal > 0)
+           else if (inputHorizontal > 0)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                characterScale.x = 8;
+                AfterImage.GenerateAfterImages = true;
+
+                //GetComponent<SpriteRenderer>().flipX = false;
+                //WalkSound.Play();
 
             }
+            else
+            {
+                AfterImage.GenerateAfterImages = false;
+            }
             transform.localScale = characterScale;
+            
+
             //Start Player moving animation
             animator.SetBool("IsRunning", Mathf.Abs(inputHorizontal) > 0.1f);
+
         }
 
         //Dash Function
         private void Dash()
         {
-            if (_touchedGround)
+            if (!isGrounded && _touchedGround )
             {
 
                 //Dash Left
@@ -96,6 +131,8 @@ namespace SAE_Project
                     {
                         StartCoroutine(Dash(-1f));
                         animator.SetBool("IsDashing", true);
+                        Dashing.Play();
+                        
                     }
                     else
                     {
@@ -112,6 +149,8 @@ namespace SAE_Project
                     {
                         StartCoroutine(Dash(1f));
                         animator.SetBool("IsDashing", true);
+                        Dashing.Play();
+
                     }
                     else
                     {
@@ -148,6 +187,13 @@ namespace SAE_Project
             {
                 _rigidbody2D.AddForce(new Vector2(0f, _jumpHeight), ForceMode2D.Impulse);
                 animator.SetBool("IsJumping", true);
+                JumpSound.Play();
+                
+                //if (!AlreadyPlayed)
+                //{
+                //    audio.PlayOneShot(JumpSoundToPlay, Volume);
+                //    AlreadyPlayed = true;
+                //}
             }
         }
 
@@ -165,6 +211,8 @@ namespace SAE_Project
         //Attack Function
         public void Attack()
         {
+            MeleeSwing.Play();
+
             //change the vector2.right to the direction where the player is looking 
             RaycastHit2D hitShield = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Abs(transform.position.x - attackPoint.position.x) + _attackRange);
 
@@ -218,15 +266,41 @@ namespace SAE_Project
 
                 if (_timer <= 0)
                 {
+                    FireBall.Play();
                     projectile = Instantiate(_projectilePrefab, transform.position + direction * 2, transform.rotation).GetComponent<Projectile>();
                     _timer = _attackCooldown;
                     projectile.transform.right = direction;
+                    
                 }
             }
         }
+        //public void Start()
+        //{
+        //    _rigidbody2D = GetComponent<Rigidbody2D>();
+        //    WalkSound = GetComponent<AudioSource>();
+        //}
 
         void Update()
         {
+            //if (_rigidbody2D.velocity.x != 0)
+            //{
+            //    IsMoving = true;
+            //}
+            //else
+            //{
+            //    IsMoving = false;
+            //}
+            //if(IsMoving)
+            //{
+            //    if (!WalkSound.isPlaying)
+            //    {
+            //        WalkSound.Play();
+            //    }
+            //}
+            //else
+            //{
+            //    WalkSound.Stop();
+            //}
 
 
             //Make character dash

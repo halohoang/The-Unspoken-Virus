@@ -33,14 +33,6 @@ namespace SAE_Project
         [SerializeField]
         Animator animator;
 
-        [SerializeField] private float _coolDown;
-        private float _timer;
-
-        [SerializeField]
-        private float _turnCooldownf;
-
-        [SerializeField]
-        private BoxCollider2D _attackArea;
 
         // Start is called before the first frame update
         void Start()
@@ -69,49 +61,28 @@ namespace SAE_Project
                 animator.SetBool("Walk", false);
             }
 
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
-
+            if (_target.position.x < transform.position.x)
             {
-                if (_target.position.x < transform.position.x)
-                {
 
-                    GetComponent<SpriteRenderer>().flipX = true;
-                    Debug.Log("Turn Left");
+                GetComponent<SpriteRenderer>().flipX = true;
+                Debug.Log("Turn Left");
 
-                }
-                else
-                {
+            }
+            else
+            {
 
-                    GetComponent<SpriteRenderer>().flipX = false;
-                    Debug.Log("Turn Right");
+                GetComponent<SpriteRenderer>().flipX = false;
+                Debug.Log("Turn Right");
 
-                }
-                _timer = _turnCooldownf;
             }
 
-
-
-            //if(Vector2.Distance(transform.position, _target.position) > _stoppingDistance)
-            //{
-            //    transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed *Time.deltaTime);
-            //}
 
             if (distance <= _blockingRange)
             {
                 animator.SetTrigger("Block");
             }
         }
-        //IEnumerator TurnLeft()
-        //{
-        //    yield return new WaitForSeconds(_turnCooldownf);
-        //}
-
-        //IEnumerator TurnRight()
-        //{
-        //    yield return new WaitForSeconds(_turnCooldownf);
-        //}
-
+       
         public void OnBlockEnding()
         {
             animator.SetTrigger("Attack");
