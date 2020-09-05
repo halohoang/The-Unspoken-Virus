@@ -92,8 +92,8 @@ namespace SAE_Project
             //Move the sprite in horizontal direction
             transform.Translate(inputHorizontal * _speed * Time.deltaTime, 0f, 0f);
 
-            //Flip the Sprite changing in horizontal direction
             Vector3 characterScale = transform.localScale;
+            //Flip the Sprite changing in horizontal direction
             if (inputHorizontal < 0)
             {
                 characterScale.x = -8;
@@ -256,15 +256,18 @@ namespace SAE_Project
                 //Flip player sprite
                 Vector3 mousePosition = Input.mousePosition; // Give mouse position to screenspace
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //change mouse position to worldspace
+                Vector3 characterScale = transform.localScale;
 
                 if (mousePosition.x > transform.position.x)
                 {
-                    GetComponent<SpriteRenderer>().flipX = false;
+                    characterScale.x = -8;
+                    //GetComponent<SpriteRenderer>().flipX = false;
 
                 }
                 else
                 {
-                    GetComponent<SpriteRenderer>().flipX = true;
+                    characterScale.x = 8;
+                    //GetComponent<SpriteRenderer>().flipX = true;
 
                 }
 

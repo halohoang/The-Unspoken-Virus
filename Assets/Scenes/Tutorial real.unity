@@ -10969,12 +10969,12 @@ PrefabInstance:
     - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
         type: 3}
@@ -10994,7 +10994,27 @@ PrefabInstance:
     - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 245791098}
+    - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2866560130423950389, guid: d61e7af9c6aca494db10a9c63f15a36d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2866560131009541539, guid: d61e7af9c6aca494db10a9c63f15a36d,
         type: 3}
