@@ -8551,11 +8551,6 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 831588271}
-    - target: {fileID: 3718583966485092741, guid: 63bc1a17862170b4ab9938f7442a4953,
-        type: 3}
-      propertyPath: Index
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3718583966485092743, guid: 63bc1a17862170b4ab9938f7442a4953,
         type: 3}
       propertyPath: _reload

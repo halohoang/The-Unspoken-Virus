@@ -20,6 +20,7 @@ namespace SAE_Project
         [SerializeField]
         Animator animator;
         [SerializeField] private GameObject _reload;
+
         // Functions
         void Update()
         {   //When the game starts the players health will always be the same as the max Health
@@ -35,10 +36,11 @@ namespace SAE_Project
             if (_currentHealth <= 0)
             {
 
-                animator.SetTrigger("IsDead");
+                animator.SetBool("IsDead", true);
                 Debug.Log(_currentHealth);
 
-                gameObject.SetActive(false);
+
+               // gameObject.SetActive(false);
 
                 //Relaod Scene when press try again
                 _reload.SetActive(true);
@@ -57,7 +59,8 @@ namespace SAE_Project
         {
             if (other.CompareTag("Spike"))
             {
-                gameObject.SetActive(false);
+                animator.SetBool("IsDead", true);
+                // gameObject.SetActive(false);
                 _reload.SetActive(true);
             }
         }
