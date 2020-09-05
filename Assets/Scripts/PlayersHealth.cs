@@ -20,6 +20,7 @@ namespace SAE_Project
         [SerializeField]
         Animator animator;
         [SerializeField] private GameObject _reload;
+        public static bool IsInputEnabled = true;
 
         // Functions
         void Update()
@@ -31,28 +32,37 @@ namespace SAE_Project
             //When dealing damage is going to reduce your health and if your health drops to 0 you die ;)
             _currentHealth -= damage;
 
-                
+
 
             if (_currentHealth <= 0)
             {
 
                 animator.SetBool("IsDead", true);
-                Debug.Log(_currentHealth);
+
+                // Debug.Log(_currentHealth);
 
 
-               // gameObject.SetActive(false);
+                // gameObject.SetActive(false);
 
                 //Relaod Scene when press try again
                 _reload.SetActive(true);
-
+                StartCoroutine(DeactiveInput());
 
             }
 
-            
+            IEnumerator DeactiveInput()
+            {
+
+                yield return new WaitForSeconds(1.5f);
+                Time.timeScale = 0f;
+            }
+
+
+
 
         }
 
-       
+
 
         //when colliding with the traps is going to destroy the player 
         public void OnTriggerEnter2D(Collider2D other)
@@ -60,6 +70,7 @@ namespace SAE_Project
             if (other.CompareTag("Spike"))
             {
                 animator.SetBool("IsDead", true);
+
                 // gameObject.SetActive(false);
                 _reload.SetActive(true);
             }

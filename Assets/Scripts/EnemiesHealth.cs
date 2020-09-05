@@ -25,7 +25,6 @@ namespace SAE_Project
 
             if (_currentHealth <= 0)
             {
-                Die();
                 Dead.Play();
             _animator.SetBool("Dead", true);
                 StartCoroutine(Deactive());
@@ -33,17 +32,19 @@ namespace SAE_Project
             }
         }
 
-        void Die()
-        {
-
-            //yield return new WaitForSeconds(3);
-            //Destroy(gameObject);
-            //_animator.SetBool("Dead", true);
-        }
+      
         IEnumerator Deactive()
         {
             yield return new WaitForSeconds(2f);
             gameObject.SetActive(false);
+        }
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Spike"))
+            {
+                _animator.SetBool("Dead", true);
+
+            }
         }
 
         public Faction GetFaction()
