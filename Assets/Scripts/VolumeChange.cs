@@ -13,7 +13,7 @@ namespace SAE_Project.Assets.Scripts
         //Variables
         private AudioSource _audioSource;
 
-        private float _musicVolume = 1f;
+        private float _musicVolume = 0.1859943f;
 
         //functions
         private void Start()

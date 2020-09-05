@@ -1,6 +1,7 @@
 ﻿using SAE_Project;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace SAE_Project
@@ -33,11 +34,19 @@ namespace SAE_Project
         [SerializeField]
         Animator animator;
 
+        //AudioEffect
+        public AudioSource Walk;
+        public AudioClip PlayerSpotted;
+        public AudioSource ShieldBlock;
+        public AudioSource Melee;
+        
+
 
         // Start is called before the first frame update
         void Start()
         {
             _target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            gameObject.GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
@@ -51,6 +60,8 @@ namespace SAE_Project
             distance = Mathf.Sqrt(vector.x * vector.x + vector.y * vector.y);
             if (distance < _visionRange && distance > _blockingRange)
             {
+                Walk.Play();
+                Walk.PlayOneShot(PlayerSpotted,0.05f);
                 transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
                 animator.SetBool("Walk", true);
 
@@ -63,32 +74,38 @@ namespace SAE_Project
 
             if (_target.position.x < transform.position.x)
             {
-
                 GetComponent<SpriteRenderer>().flipX = true;
-                Debug.Log("Turn Left");
+               // Debug.Log("Turn Left");
 
             }
             else
             {
-
+                
                 GetComponent<SpriteRenderer>().flipX = false;
-                Debug.Log("Turn Right");
+                //Debug.Log("Turn Right");
 
             }
-
-
+            
             if (distance <= _blockingRange)
             {
+                ShieldBlock.Play();
                 animator.SetTrigger("Block");
             }
         }
        
         public void OnBlockEnding()
         {
+
             animator.SetTrigger("Attack");
+            Melee.Play();
+            StartCoroutine(StopAttack());
         }
-
-
+        IEnumerator StopAttack()
+        {
+            yield return new WaitForSeconds(1f);
+            animator.SetBool("Attack", false);
+        }
+        
         public void Attack()
         {
 
