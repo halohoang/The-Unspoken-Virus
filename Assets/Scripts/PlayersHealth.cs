@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 
 namespace SAE_Project
 {
@@ -20,6 +20,7 @@ namespace SAE_Project
         [SerializeField]
         Animator animator;
         [SerializeField] private GameObject _reload;
+
         // Functions
         void Update()
         {   //When the game starts the players health will always be the same as the max Health
@@ -30,17 +31,20 @@ namespace SAE_Project
             //When dealing damage is going to reduce your health and if your health drops to 0 you die ;)
             _currentHealth -= damage;
 
+                
+
             if (_currentHealth <= 0)
             {
 
-                animator.SetTrigger("IsDead");
+                animator.SetBool("IsDead", true);
                 Debug.Log(_currentHealth);
 
-                gameObject.SetActive(false);
+
+               // gameObject.SetActive(false);
+
+                //Relaod Scene when press try again
                 _reload.SetActive(true);
-                
-               
-               
+
 
             }
 
@@ -55,7 +59,8 @@ namespace SAE_Project
         {
             if (other.CompareTag("Spike"))
             {
-                gameObject.SetActive(false);
+                animator.SetBool("IsDead", true);
+                // gameObject.SetActive(false);
                 _reload.SetActive(true);
             }
         }

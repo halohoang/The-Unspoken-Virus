@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SAE_Project
 {
-    public class PlayerAction : MonoBehaviour
+    public class PlayerAction : MonoBehaviour 
     {
         // Variables
 
@@ -74,6 +75,9 @@ namespace SAE_Project
         //FadeOut effect
         public FadeOut AfterImage;
 
+        //LoadScene
+        public int Index;
+
 
 
 
@@ -88,8 +92,8 @@ namespace SAE_Project
             //Move the sprite in horizontal direction
             transform.Translate(inputHorizontal * _speed * Time.deltaTime, 0f, 0f);
 
-            //Flip the Sprite changing in horizontal direction
             Vector3 characterScale = transform.localScale;
+            //Flip the Sprite changing in horizontal direction
             if (inputHorizontal < 0)
             {
                 characterScale.x = -8;
@@ -252,15 +256,18 @@ namespace SAE_Project
                 //Flip player sprite
                 Vector3 mousePosition = Input.mousePosition; // Give mouse position to screenspace
                 mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); //change mouse position to worldspace
+                Vector3 characterScale = transform.localScale;
 
                 if (mousePosition.x > transform.position.x)
                 {
-                    GetComponent<SpriteRenderer>().flipX = false;
+                    characterScale.x = -8;
+                    //GetComponent<SpriteRenderer>().flipX = false;
 
                 }
                 else
                 {
-                    GetComponent<SpriteRenderer>().flipX = true;
+                    characterScale.x = 8;
+                    //GetComponent<SpriteRenderer>().flipX = true;
 
                 }
 
@@ -282,25 +289,13 @@ namespace SAE_Project
 
         void Update()
         {
-            //if (_rigidbody2D.velocity.x != 0)
-            //{
-            //    IsMoving = true;
-            //}
-            //else
-            //{
-            //    IsMoving = false;
-            //}
-            //if(IsMoving)
-            //{
-            //    if (!WalkSound.isPlaying)
-            //    {
-            //        WalkSound.Play();
-            //    }
-            //}
-            //else
-            //{
-            //    WalkSound.Stop();
-            //}
+ 
+            if (Input.GetKeyDown("r"))
+            {
+               
+                SceneManager.LoadScene(Index);
+            }
+
 
 
             //Make character dash

@@ -24,14 +24,22 @@ namespace SAE_Project
             if (_currentHealth <= 0)
             {
                 Die();
+            _animator.SetBool("Dead", true);
+                StartCoroutine(Deactive());
+
             }
         }
 
         void Die()
         {
 
-            Debug.Log("Enemy died!");
+            //yield return new WaitForSeconds(3);
             //Destroy(gameObject);
+            //_animator.SetBool("Dead", true);
+        }
+        IEnumerator Deactive()
+        {
+            yield return new WaitForSeconds(3f);
             gameObject.SetActive(false);
         }
 
