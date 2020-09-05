@@ -6,11 +6,13 @@ namespace SAE_Project
     public class EnemiesHealth : MonoBehaviour, IDamageable
     {   //Variables
         [SerializeField]
-        private int _maxHealth = 1;
+        private int _maxHealth;
         [SerializeField]
         private int _currentHealth;
         [SerializeField]
         private Animator _animator;
+
+        public AudioSource Dead;
         void Start()
         {
             _currentHealth = _maxHealth;
@@ -24,6 +26,7 @@ namespace SAE_Project
             if (_currentHealth <= 0)
             {
                 Die();
+                Dead.Play();
             _animator.SetBool("Dead", true);
                 StartCoroutine(Deactive());
 
@@ -39,7 +42,7 @@ namespace SAE_Project
         }
         IEnumerator Deactive()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             gameObject.SetActive(false);
         }
 
