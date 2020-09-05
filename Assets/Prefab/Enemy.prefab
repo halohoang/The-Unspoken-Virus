@@ -287,7 +287,7 @@ MonoBehaviour:
   _visionRange: 8.88
   _attackDamage: 14
   _attackRange: 1.89
-  _blockingRange: 1.89
+  _blockingRange: 2.61
   attackMask:
     serializedVersion: 2
     m_Bits: 512
@@ -429,7 +429,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 218
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
