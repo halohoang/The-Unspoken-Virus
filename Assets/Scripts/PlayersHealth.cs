@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 
 namespace SAE_Project
 {
@@ -30,6 +30,8 @@ namespace SAE_Project
             //When dealing damage is going to reduce your health and if your health drops to 0 you die ;)
             _currentHealth -= damage;
 
+                
+
             if (_currentHealth <= 0)
             {
 
@@ -37,10 +39,10 @@ namespace SAE_Project
                 Debug.Log(_currentHealth);
 
                 gameObject.SetActive(false);
+
+                //Relaod Scene when press try again
                 _reload.SetActive(true);
-                
-               
-               
+
 
             }
 

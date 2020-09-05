@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SAE_Project
 {
-    public class PlayerAction : MonoBehaviour
+    public class PlayerAction : MonoBehaviour 
     {
         // Variables
 
@@ -73,6 +74,9 @@ namespace SAE_Project
 
         //FadeOut effect
         public FadeOut AfterImage;
+
+        //LoadScene
+        public int Index;
 
 
 
@@ -282,25 +286,13 @@ namespace SAE_Project
 
         void Update()
         {
-            //if (_rigidbody2D.velocity.x != 0)
-            //{
-            //    IsMoving = true;
-            //}
-            //else
-            //{
-            //    IsMoving = false;
-            //}
-            //if(IsMoving)
-            //{
-            //    if (!WalkSound.isPlaying)
-            //    {
-            //        WalkSound.Play();
-            //    }
-            //}
-            //else
-            //{
-            //    WalkSound.Stop();
-            //}
+ 
+            if (Input.GetKeyDown("r"))
+            {
+               
+                SceneManager.LoadScene(Index);
+            }
+
 
 
             //Make character dash

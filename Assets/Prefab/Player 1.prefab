@@ -983,6 +983,7 @@ MonoBehaviour:
   Dashing: {fileID: 1390769456}
   MeleeSwing: {fileID: 883469604}
   AfterImage: {fileID: 334443076}
+  Index: 1
 --- !u!50 &3718583966485092740
 Rigidbody2D:
   serializedVersion: 4
@@ -1045,6 +1046,7 @@ MonoBehaviour:
   _currentHealth: 1
   _maxHealth: 1
   animator: {fileID: 3718583966485092738}
+  _reload: {fileID: 0}
 --- !u!114 &334443076
 MonoBehaviour:
   m_ObjectHideFlags: 0
