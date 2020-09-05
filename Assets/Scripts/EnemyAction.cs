@@ -61,7 +61,7 @@ namespace SAE_Project
             if (distance < _visionRange && distance > _blockingRange)
             {
                 Walk.Play();
-                Walk.PlayOneShot(PlayerSpotted,0.1f);
+                Walk.PlayOneShot(PlayerSpotted,0.05f);
                 transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
                 animator.SetBool("Walk", true);
 
@@ -88,6 +88,7 @@ namespace SAE_Project
             
             if (distance <= _blockingRange)
             {
+                ShieldBlock.Play();
                 animator.SetTrigger("Block");
             }
         }
@@ -96,6 +97,7 @@ namespace SAE_Project
         {
 
             animator.SetTrigger("Attack");
+            Melee.Play();
             StartCoroutine(StopAttack());
         }
         IEnumerator StopAttack()

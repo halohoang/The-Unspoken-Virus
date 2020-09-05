@@ -962,7 +962,7 @@ MonoBehaviour:
   _jumpHeight: 8.52
   attackPoint: {fileID: 3718583965905993512}
   _attackRange: 2
-  _attackDamage: 10
+  _attackDamage: 100
   isGrounded: 0
   _projectilePrefab: {fileID: 4562672541876710009, guid: fc5f0c87386b594418b5f83d2837c9c3,
     type: 3}
