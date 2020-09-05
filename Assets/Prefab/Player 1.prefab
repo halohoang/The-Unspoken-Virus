@@ -1057,6 +1057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4390626f737195e40a9d2210d20c7169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeDelay: 0.1
+  FadeDelay: 0.29
   Fade: {fileID: 0}
   GenerateAfterImages: 0
