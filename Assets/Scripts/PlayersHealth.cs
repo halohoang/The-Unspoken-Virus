@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 namespace SAE_Project
 {
     public interface IDamageable
@@ -17,7 +19,7 @@ namespace SAE_Project
         public int _maxHealth;
         [SerializeField]
         Animator animator;
-
+        [SerializeField] private GameObject _reload;
         // Functions
         void Update()
         {   //When the game starts the players health will always be the same as the max Health
@@ -35,11 +37,18 @@ namespace SAE_Project
                 Debug.Log(_currentHealth);
 
                 gameObject.SetActive(false);
+                _reload.SetActive(true);
+                
+               
+               
 
             }
 
+            
 
         }
+
+       
 
         //when colliding with the traps is going to destroy the player 
         public void OnTriggerEnter2D(Collider2D other)
@@ -47,7 +56,7 @@ namespace SAE_Project
             if (other.CompareTag("Spike"))
             {
                 gameObject.SetActive(false);
-
+                _reload.SetActive(true);
             }
         }
 
