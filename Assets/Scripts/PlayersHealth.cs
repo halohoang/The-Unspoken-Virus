@@ -22,6 +22,13 @@ namespace SAE_Project
         [SerializeField] private GameObject _reload;
         public static bool IsInputEnabled = true;
 
+        public AudioSource Die;
+
+
+
+
+
+
         // Functions
         void Update()
         {   //When the game starts the players health will always be the same as the max Health
@@ -48,6 +55,7 @@ namespace SAE_Project
             {
 
                 animator.SetBool("IsDead", true);
+                Die.Play();
 
                 // Debug.Log(_currentHealth);
 
@@ -55,6 +63,7 @@ namespace SAE_Project
                 // gameObject.SetActive(false);
 
                 //Relaod Scene when press try again
+                gameObject.SetActive(false);
                 _reload.SetActive(true);
                 StartCoroutine(DeactiveInput());
 
@@ -75,6 +84,9 @@ namespace SAE_Project
             if (other.CompareTag("Spike"))
             {
                 animator.SetBool("IsDead", true);
+
+                Die.Play();
+                gameObject.SetActive(false);
 
                 // gameObject.SetActive(false);
                 _reload.SetActive(true);
