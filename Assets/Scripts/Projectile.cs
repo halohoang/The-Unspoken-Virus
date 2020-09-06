@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Collections;
 
 namespace SAE_Project
 {
@@ -36,9 +37,14 @@ namespace SAE_Project
             }
             if (collision.CompareTag("Lmao"))
             {
-
-                gameObject.SetActive(false);
+                StartCoroutine(DeactiveProj());
             }
+        }
+
+        IEnumerator DeactiveProj()
+        {
+            yield return new WaitForSeconds(0.1f);
+            gameObject.SetActive(false);
         }
     }
 }

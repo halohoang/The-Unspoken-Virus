@@ -1060,5 +1060,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeDelay: 0.29
-  Fade: {fileID: 0}
+  Fade: {fileID: 1855925690295007567, guid: ed6c9d2022706eb48b6e6f3f0863cbe6, type: 3}
   GenerateAfterImages: 0
