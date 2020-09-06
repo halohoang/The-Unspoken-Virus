@@ -16,6 +16,11 @@ namespace SAE_Project.Assets.Scripts
 
         public event Action<float> HealthChanged;
 
+        //Sound Effect
+        public AudioSource Hurt;
+        public AudioSource DieSound;
+
+
         void Start()
         {
             _currentHealth = _maxHealth;
@@ -24,12 +29,14 @@ namespace SAE_Project.Assets.Scripts
         // Functions
         public void DealDamage(int damage)
         {
+            Hurt.Play();
             _currentHealth -= damage;
 
             HealthChanged?.Invoke((float)_currentHealth / _maxHealth);
 
             if (_currentHealth <= 0)
             {
+                DieSound.Play();
                 Die();
             }
         }

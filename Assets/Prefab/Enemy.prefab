@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _stoppingDistance: 1
-  _visionRange: 8.88
+  _visionRange: 4.93
   _attackDamage: 14
   _attackRange: 1.89
   _blockingRange: 2.61

@@ -28,6 +28,8 @@ namespace SAE_Project
                 Dead.Play();
             _animator.SetBool("Dead", true);
                 StartCoroutine(Deactive());
+                  gameObject.SetActive(false);
+                Destroy(gameObject);
 
             }
         }
@@ -35,14 +37,16 @@ namespace SAE_Project
       
         IEnumerator Deactive()
         {
-            yield return new WaitForSeconds(2f);
-            gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
         }
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Spike"))
             {
                 _animator.SetBool("Dead", true);
+                StartCoroutine(Deactive());
+                Destroy(gameObject);
+
 
             }
         }
