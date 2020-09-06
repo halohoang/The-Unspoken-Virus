@@ -73,7 +73,10 @@ namespace SAE_Project
 
                 // gameObject.SetActive(false);
                 _reload.SetActive(true);
+           
+
             }
+            
         }
 
         public Faction GetFaction()
