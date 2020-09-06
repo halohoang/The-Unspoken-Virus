@@ -5,21 +5,19 @@ using UnityEngine;
 public class Interactive: MonoBehaviour
 {
     public GameObject SignBoard;
+    
 
-
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player"))
         {
 
             SignBoard.SetActive(true);
+            
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        
-    }
+   
     // Use this for initialization
     void Start()
     {
@@ -29,6 +27,9 @@ public class Interactive: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+           
     }
+
+
+
 }
