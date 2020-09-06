@@ -28,22 +28,38 @@ namespace SAE_Project
 
         [SerializeField]
         Animator animator;
+        //Sound Effect
+        public AudioSource Attack;
+        public AudioSource Laugh;
+        public AudioSource MoveSoundCue;
+
+        [SerializeField]
+        private float _waitSecond;
 
 
         void Start()
         {
             _waitTime = _startWaitTime;
             _randomSpot = Random.Range(0, _moveSpots.Length);
+            gameObject.GetComponent<AudioSource>();
 
+        }
+
+        IEnumerator SoundCue()
+        {
+            MoveSoundCue.Play();
+            yield return new WaitForSeconds(_waitSecond);
         }
 
         void Update()
         {
+            Laugh.Play();
             transform.position = Vector2.MoveTowards(transform.position, _moveSpots[_randomSpot].position, _speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, _moveSpots[_randomSpot].position) < 0.2f)
             {
                 if (_waitTime <= 0)
                 {
+                    StartCoroutine(SoundCue());
                     _randomSpot = Random.Range(0, _moveSpots.Length);
                     _waitTime = _startWaitTime;
 
@@ -78,6 +94,7 @@ namespace SAE_Project
         {
             if (_timeBtwShots <= 0)
             {
+                Attack.Play();
                 Instantiate(_projectile, transform.position, Quaternion.identity);
                 _timeBtwShots = _startTimeBtwShots;
                 animator.SetTrigger("Casting");

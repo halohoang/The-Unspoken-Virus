@@ -35,8 +35,8 @@ namespace SAE_Project
         Animator animator;
 
         //AudioEffect
-        public AudioSource Walk;
-        public AudioClip PlayerSpotted;
+        //public AudioSource Walk;
+        public AudioSource PlayerSpotted;
         public AudioSource ShieldBlock;
         public AudioSource Melee;
         
@@ -52,19 +52,15 @@ namespace SAE_Project
         // Update is called once per frame
         void Update()
         {
-
-
             float distance;
-
             Vector3 vector = _target.position - transform.position;
             distance = Mathf.Sqrt(vector.x * vector.x + vector.y * vector.y);
             if (distance < _visionRange && distance > _blockingRange)
             {
-                Walk.Play();
-                Walk.PlayOneShot(PlayerSpotted,0.05f);
+                //Walk.Play();
+                PlayerSpotted.Play();
                 transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
                 animator.SetBool("Walk", true);
-
             }
             else
             {
@@ -80,12 +76,9 @@ namespace SAE_Project
             }
             else
             {
-                
                 GetComponent<SpriteRenderer>().flipX = false;
                 //Debug.Log("Turn Right");
-
             }
-            
             if (distance <= _blockingRange)
             {
                 ShieldBlock.Play();
