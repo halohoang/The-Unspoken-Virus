@@ -27,6 +27,12 @@ namespace SAE_Project
         {   //When the game starts the players health will always be the same as the max Health
             _currentHealth = _maxHealth;
         }
+        IEnumerator DeactiveInput()
+        {
+
+            yield return new WaitForSeconds(1.5f);
+            Time.timeScale = 0f;
+        }
         public void DealDamage(int damage)
         {
             //When dealing damage is going to reduce your health and if your health drops to 0 you die ;)
@@ -50,12 +56,7 @@ namespace SAE_Project
 
             }
 
-            IEnumerator DeactiveInput()
-            {
-
-                yield return new WaitForSeconds(1.5f);
-                Time.timeScale = 0f;
-            }
+            
 
 
 
@@ -73,7 +74,7 @@ namespace SAE_Project
 
                 // gameObject.SetActive(false);
                 _reload.SetActive(true);
-           
+                StartCoroutine(DeactiveInput());
 
             }
             
