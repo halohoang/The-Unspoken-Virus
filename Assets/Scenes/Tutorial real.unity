@@ -6965,7 +6965,7 @@ GameObject:
   - component: {fileID: 1058014365}
   - component: {fileID: 1058014364}
   m_Layer: 0
-  m_Name: pixil-frame-0-5
+  m_Name: Signboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8462,7 +8462,7 @@ GameObject:
   - component: {fileID: 1438506690}
   - component: {fileID: 1438506689}
   m_Layer: 0
-  m_Name: pixil-frame-0-4
+  m_Name: Signboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9462,7 +9462,7 @@ GameObject:
   - component: {fileID: 1722471963}
   - component: {fileID: 1722471962}
   m_Layer: 0
-  m_Name: pixil-frame-0
+  m_Name: Signboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9993,7 +9993,7 @@ GameObject:
   - component: {fileID: 1925214687}
   - component: {fileID: 1925214686}
   m_Layer: 0
-  m_Name: pixil-frame-0-6
+  m_Name: Signboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -31,7 +31,11 @@ namespace SAE_Project
         {
 
             yield return new WaitForSeconds(1.5f);
-            Time.timeScale = 0f;
+            
+        }
+        public void Start()
+        {
+            Time.timeScale = 1f;
         }
         public void DealDamage(int damage)
         {
