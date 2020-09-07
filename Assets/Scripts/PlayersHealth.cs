@@ -38,6 +38,8 @@ namespace SAE_Project
         {
 
             yield return new WaitForSeconds(1.5f);
+            Time.timeScale = 0;
+            gameObject.SetActive(false);
             
         }
         public void Start()
@@ -55,15 +57,9 @@ namespace SAE_Project
             {
 
                 animator.SetBool("IsDead", true);
-                Die.Play();
-
-                // Debug.Log(_currentHealth);
-
-
-                // gameObject.SetActive(false);
+                
 
                 //Relaod Scene when press try again
-                gameObject.SetActive(false);
                 _reload.SetActive(true);
                 StartCoroutine(DeactiveInput());
 
@@ -86,11 +82,11 @@ namespace SAE_Project
                 animator.SetBool("IsDead", true);
 
                 Die.Play();
-                gameObject.SetActive(false);
 
                 // gameObject.SetActive(false);
                 _reload.SetActive(true);
                 StartCoroutine(DeactiveInput());
+               
 
             }
             
