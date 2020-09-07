@@ -9,6 +9,7 @@ TagManager:
   - GameMaster
   - Shield
   - Lmao
+  - Platform
   layers:
   - Default
   - TransparentFX

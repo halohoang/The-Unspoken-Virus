@@ -39,6 +39,10 @@ namespace SAE_Project.Assets.Scripts
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision.CompareTag("Platform"))
+			{
+                DestroyProjectile();
+			}
 
             if (collision.CompareTag("Player"))
             {
@@ -53,7 +57,8 @@ namespace SAE_Project.Assets.Scripts
             }
 
         }
-        public float LifeTime => _range / _speed;
+
+		public float LifeTime => _range / _speed;
 
         private void OnEnable()
         {
