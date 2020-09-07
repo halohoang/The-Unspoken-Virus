@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SAE_Project.Assets.Scripts
 {
@@ -38,7 +39,14 @@ namespace SAE_Project.Assets.Scripts
             {
                 DieSound.Play();
                 Die();
+                StartCoroutine(ChangeScene());
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+        }
+        IEnumerator ChangeScene()
+        {
+            yield return new WaitForSeconds(3f);
+            
         }
 
         void Die()
